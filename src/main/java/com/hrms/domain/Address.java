@@ -15,8 +15,14 @@ public class Address implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
 	private long id;
+	
+	@Column(name = "STATE")
 	private String state;
+	
+	@Column(name = "STREET")
 	private String street;
+	
+	@Column(name = "ZIP")
 	private String zip;
 	
 	public Address() { }

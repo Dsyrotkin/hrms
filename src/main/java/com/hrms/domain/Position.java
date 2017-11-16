@@ -1,14 +1,33 @@
 package com.hrms.domain;
 
-public class Position {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+public class Position implements Serializable {
 	
+	private static final long serialVersionUID = -3210543366146688831L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private long id;
+	
+	@Column(name = "NAME")
 	private String name;
+	
+	@Column(name = "DESCRIPTION")
 	private String description;
+	
+	@Column(name = "SALARY")
 	private Integer salary;
+	
+	@ManyToOne
 	private Employee employee;
-	private Department department;
-	private Project project;
 	
 	public long getId() {
 		return id;
@@ -48,22 +67,6 @@ public class Position {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
-	}
-
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-
-	public Project getProject() {
-		return project;
-	}
-
-	public void setProject(Project project) {
-		this.project = project;
 	}
 	
 }
