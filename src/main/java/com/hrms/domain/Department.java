@@ -1,15 +1,35 @@
 package com.hrms.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Department {
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+public class Department implements Serializable {
 	
+	private static final long serialVersionUID = 8884341285809650039L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private long id;
+	
+	@Column(name = "NAME")
 	private String name;
+	
+	@Column(name = "DESCRIPTION")
 	private String description;
-	private List<Position> positions = new ArrayList<>();
+	
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Employee> employees = new ArrayList<>();
+	
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Project> projects = new ArrayList<>();
 	
 	public Department() {}
@@ -41,14 +61,6 @@ public class Department {
 	
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	
-	public List<Position> getPositions() {
-		return positions;
-	}
-	
-	public void addPosition(Position position) {
-		positions.add(position);
 	}
 	
 	public List<Employee> getEmployees() {

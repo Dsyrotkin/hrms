@@ -1,7 +1,19 @@
 package com.hrms.domain;
 
-public class Address {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class Address implements Serializable {
+
+	private static final long serialVersionUID = -6160454593302408050L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private long id;
 	private String state;
 	private String street;
