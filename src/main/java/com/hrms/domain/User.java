@@ -1,14 +1,43 @@
 package com.hrms.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+@Entity
+public class User implements Serializable {
 	
+	private static final long serialVersionUID = 6571601788327706347L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private long id;
+	
+	@Column(name = "USERNAME")
 	private String userName;
+	
+	@Column(name = "PASSWORD")
 	private String password;
+	
+	@OneToOne(mappedBy = "employee")
+	@JoinColumn(name = "EMPLOYEE")
 	private Employee employee;
+	
+	@OneToMany
+	@Fetch(FetchMode.JOIN)
 	private List<Role> roles = new ArrayList<>();
 	
 	public long getId() {
