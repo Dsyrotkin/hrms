@@ -19,9 +19,13 @@
 
 		<spring:url value="?language=ar" var="url_ar"></spring:url>
 		<spring:url value="?language=en" var="url_en"></spring:url>
+		<spring:url value="?language=tr" var="url_tr"></spring:url>
+		<spring:url value="?language=ua" var="url_ua"></spring:url>
 
 		<a href="${url_ar}">Arabic</a>
 		<a href="${url_en}">English</a>
+		<a href="${url_tr}">Turkish</a>
+		<a href="${url_ua}">Ukraine</a>
 		
 	</form:form>
 
