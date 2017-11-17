@@ -39,19 +39,63 @@
 
 	</bean>
 
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basename" value="messages" />
-		<property name="defaultEncoding" value="UTF-8" />
-	</bean>
+
 
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 		<property name="validationMessageSource" ref="messageSource" />
 	</bean>
-	<!-- <mvc:annotation-driven validator="validator" /> <mvc:resources location="/resources/" 
-		mapping="/resource/**" /> <mvc:resources mapping="/css/**" location="/css/" 
-		/> <mvc:resources mapping="/image/**" location="/images/" /> -->
+
+
+	<!-- LOCALIZATION -->
+	
+	
+		<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+			</list>
+		</property>
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+
+	<bean id="messageSource2"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>labels</value>
+			</list>
+		</property>
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+<!-- 
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames" value="classpath:errorMessages,classpath:messages" />
+	</bean>
+ -->
+
+
+	<!-- new -->
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="language" />
+		</bean>
+	</mvc:interceptors>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10240000" />
+	</bean>
+
 
 
 

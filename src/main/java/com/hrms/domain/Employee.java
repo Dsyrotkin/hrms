@@ -60,7 +60,7 @@ public class Employee implements Serializable {
 	@Fetch(FetchMode.JOIN)
 	private List<Position> positions = new ArrayList<>();
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	@Fetch(FetchMode.JOIN)
 	private List<Project> projects = new ArrayList<>();
 	

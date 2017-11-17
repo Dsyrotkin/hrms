@@ -13,6 +13,16 @@
 
 	<form:form commandName="employee">
 		<p>Test</p>
+		
+				
+		<spring:message code="firstName" text="Not Found"></spring:message>
+
+		<spring:url value="?language=ar" var="url_ar"></spring:url>
+		<spring:url value="?language=en" var="url_en"></spring:url>
+
+		<a href="${url_ar}">Arabic</a>
+		<a href="${url_en}">English</a>
+		
 	</form:form>
 
 </body>
