@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,7 +37,7 @@ public class Project implements Serializable {
 	@ManyToOne
 	private Department department;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Employee> employees = new ArrayList<>();
 	
 	public long getId() {
