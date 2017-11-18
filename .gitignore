@@ -6,3 +6,5 @@ target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 target/classes/com/hrms/controller/IndexController.class
 *.class
 target/classes/log4j.properties
+
+.classpath
