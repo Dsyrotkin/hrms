@@ -12,11 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 @Entity
+@Table(name="USER")
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 6571601788327706347L;
@@ -32,12 +34,12 @@ public class User implements Serializable {
 	@Column(name = "PASSWORD")
 	private String password;
 	
-	@OneToOne(mappedBy = "employee")
+	@OneToOne(mappedBy = "user")
 	@JoinColumn(name = "EMPLOYEE")
 	private Employee employee;
 	
 	@OneToMany
-	@Fetch(FetchMode.JOIN)
+//	@Fetch(FetchMode.JOIN)
 	private List<Role> roles = new ArrayList<>();
 	
 	public long getId() {

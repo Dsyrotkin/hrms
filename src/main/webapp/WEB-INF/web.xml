@@ -17,26 +17,34 @@
 		<servlet-name>hrms</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
-	 <filter>  
-    <filter-name>encodingFilter</filter-name>  
-    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>  
-    <init-param>  
-       <param-name>encoding</param-name>  
-       <param-value>UTF-8</param-value>  
-    </init-param>  
-    <init-param>  
-       <param-name>forceEncoding</param-name>  
-       <param-value>true</param-value>  
-    </init-param>  
-</filter>  
-<filter-mapping>  
-    <filter-name>encodingFilter</filter-name>  
-    <url-pattern>/*</url-pattern>  
-</filter-mapping> 
-<error-page>
-<error-code>404</error-code>
-<location>/WEB-INF/jsp/page-not-found.jsp</location>
-</error-page>
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/config/applicationContext.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/page-not-found.jsp</location>
+	</error-page>
 
 </web-app>
