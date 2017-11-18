@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -61,6 +62,7 @@ public class Employee implements Serializable {
 	private List<Position> positions = new ArrayList<>();
 	
 	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="PROJECT_EMP")
 	@Fetch(FetchMode.JOIN)
 	private List<Project> projects = new ArrayList<>();
 	
