@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -38,8 +39,9 @@ public class User implements Serializable {
 	@JoinColumn(name = "EMPLOYEE")
 	private Employee employee;
 	
-	@OneToMany
-//	@Fetch(FetchMode.JOIN)
+
+	@ManyToMany
+	@Fetch(FetchMode.JOIN)
 	private List<Role> roles = new ArrayList<>();
 	
 	public long getId() {
