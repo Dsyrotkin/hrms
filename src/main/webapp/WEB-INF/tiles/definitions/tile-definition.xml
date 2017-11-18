@@ -8,7 +8,7 @@
 		<put-attribute name="title" value="" />
 		<put-attribute name="heading" value="" />
 		<put-attribute name="tagline" value="" />
- 		<put-attribute name="navigation" value="/WEB-INF/tiles/template/navigation.jsp" />
+ 		<put-attribute name="navigation" value="/WEB-INF/tiles/template/navigation.jsp"/>
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
 	</definition>
@@ -20,11 +20,9 @@
 	</definition>
 	
 	<definition name="login" extends="baseLayout">
-		<put-attribute name="title" value=""></put-attribute>
-		<put-attribute name="navigation" value="/WEB-INF/tiles/template/navigation.jsp"/>
-		<put-attribute name="heading" value=""></put-attribute>
+		<put-attribute name="title" value="Login"/>
 		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp"></put-attribute>
-		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
+		
 	</definition>
 	<!-- 
 

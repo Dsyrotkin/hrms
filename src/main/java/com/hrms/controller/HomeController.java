@@ -24,7 +24,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String Home(Model model) {
 	model.addAttribute("user", helper.getPrincipal());
-		return "welcome";
+		return "login";
 	}
 	
 }
