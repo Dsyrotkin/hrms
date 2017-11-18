@@ -15,7 +15,7 @@ public class DepartmentController {
     
 	@GetMapping("/manageDept")
 	public String manageDepartment(@ModelAttribute Department dept) {
-		
+		 
 		return "manageDepartment";
 	}
 	
