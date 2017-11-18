@@ -26,5 +26,5 @@ public class HomeController {
 	model.addAttribute("user", helper.getPrincipal());
 		return "login";
 	}
-	
+	 
 }
