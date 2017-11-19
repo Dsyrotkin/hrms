@@ -27,6 +27,12 @@ public class RoleServiceImpl implements RoleService{
 		// TODO Auto-generated method stub
 		return (List<Role>) roleRepository.findAll();
 	}
+
+	@Override
+	public Role save(Role role) {
+		// TODO Auto-generated method stub
+		return roleRepository.save(role);
+	}
 	
 
 }

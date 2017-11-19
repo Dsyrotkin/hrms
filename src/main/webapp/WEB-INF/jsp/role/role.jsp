@@ -3,27 +3,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <c:url var="context" value="/" />
 <div class="row">
 	<div class="col-xs-3 col-md-3"></div>
 	<div class="col-xs-6 col-md-6">
 		<div class="panel panel-default">
-			<div class="panel-heading">ROLES</div>
+			<div class="panel-heading"><spring:message code="addRole.page.title" /></div>
 			<div class="panel-body">
-				<c:url var="ProjectUrl" value="/project" />
 				<ul class="nav nav-tabs">
-					<c:forEach var="role" items="${roles}">
-						<li><a data-toggle="tab" href="#tab_${role.name}">${role.name}</a></li>
+					<c:forEach var="role" items="${roles}" varStatus="loop">
+				<li><a data-toggle="tab" href="#tab_${role.name}">${role.name}</a></li>
 					</c:forEach>
-					<li><a data-toggle="tab" href="#">+</a></li>
+					<li><a href="role/addRole">+</a></li>
 					<!-- 	<li class="active"><a data-toggle="tab" href="#admins">ADMINS</a></li>
 					<li><a data-toggle="tab" href="#users">USERS</a></li> -->
 				</ul>
 
-				<c:forEach var="role" items="${roles}">
-					<div class="tab-content">
-						<div id="tab_${role.name}" class="tab-pane fade in">
+						<div class="tab-content">
+				<c:forEach var="role" items="${roles}" varStatus="loop">
+
+					<div id="tab_${role.name}" class="tab-pane fade">
 							<h3>${role.name}</h3>
 							<div style = "padding: 5px">
 								<div class="input-group">
@@ -40,6 +41,7 @@
 							</div>
 						</div>
 				</c:forEach>
+				</div>
 
 				<!-- 					<div id="users" class="tab-pane fade">
 						<h3>ADMINS</h3>
