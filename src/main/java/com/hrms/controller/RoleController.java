@@ -32,6 +32,7 @@ public class RoleController {
 	
 	@RequestMapping(value = "/admin/role", method = RequestMethod.GET)
 	public String addRolePage(Model model) {
+		model.addAttribute("roles",roleService.getAll());
 		return "role";
 	}
 	

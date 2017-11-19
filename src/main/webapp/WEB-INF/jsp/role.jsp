@@ -13,12 +13,33 @@
 			<div class="panel-body">
 				<c:url var="ProjectUrl" value="/project" />
 				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#admins">ADMINS</a></li>
-					<li><a data-toggle="tab" href="#users">USERS</a></li>
+					<c:forEach var="role" items="${roles}">
+						<li><a data-toggle="tab" href="#tab_${role.name}">${role.name}</a></li>
+					</c:forEach>
+					<li><a data-toggle="tab" href="#">+</a></li>
+					<!-- 	<li class="active"><a data-toggle="tab" href="#admins">ADMINS</a></li>
+					<li><a data-toggle="tab" href="#users">USERS</a></li> -->
 				</ul>
 
-				<div class="tab-content">
-					<div id="admins" class="tab-pane fade in active">
+				<c:forEach var="role" items="${roles}">
+					<div class="tab-content">
+						<div id="tab_${role.name}" class="tab-pane fade in">
+							<h3>${role.name}</h3>
+							<div style = "padding: 5px">
+								<div class="input-group">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="button" onclick="addRole(${role.id},'${role.name}')">Add</button>
+									</span> <input id="input_${role.name}" type="text" class="form-control" placeholder ="Username">
+								</div>
+							</div>
+							<div id="list_${role.name}" class="list-group">
+								<a href="#" class="list-group-item active"> Cras justo odio
+								</a> <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+							</div>
+						</div>
+				</c:forEach>
+
+				<!-- 					<div id="users" class="tab-pane fade">
 						<h3>ADMINS</h3>
 						<div class="list-group">
 							<a href="#" class="list-group-item active"> Cras justo odio </a>
@@ -27,20 +48,10 @@
 								class="list-group-item">Porta ac consectetur ac</a> <a href="#"
 								class="list-group-item">Vestibulum at eros</a>
 						</div>
-					</div>
-					<div id="users" class="tab-pane fade">
-						<h3>ADMINS</h3>
-						<div class="list-group">
-							<a href="#" class="list-group-item active"> Cras justo odio </a>
-							<a href="#" class="list-group-item">Dapibus ac facilisis in</a> <a
-								href="#" class="list-group-item">Morbi leo risus</a> <a href="#"
-								class="list-group-item">Porta ac consectetur ac</a> <a href="#"
-								class="list-group-item">Vestibulum at eros</a>
-						</div>
-					</div>
-				</div>
+					</div> -->
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-3  col-md-3"></div>
+</div>
+<div class="col-xs-3  col-md-3"></div>
 </div>
