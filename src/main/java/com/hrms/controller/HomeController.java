@@ -25,7 +25,6 @@ public class HomeController {
 	public String Home(Model model) {
 	model.addAttribute("user", helper.getPrincipal());
 		return "welcome";
-		
 	}
 	 
 }

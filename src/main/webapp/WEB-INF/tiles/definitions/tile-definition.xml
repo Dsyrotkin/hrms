@@ -48,6 +48,12 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp"></put-attribute>
 		
 	</definition>
+	
+		<definition name="role" extends="baseLayout">
+		<put-attribute name="title" value="Roles"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/role.jsp"></put-attribute>
+		
+	</definition>
 	<!-- 
 
 	 	
