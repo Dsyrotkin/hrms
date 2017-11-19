@@ -35,6 +35,9 @@ public class User implements Serializable {
 	@Column(name = "PASSWORD")
 	private String password;
 	
+	@Column(name = "ENABLED")
+	private boolean enabled;
+	
 	@OneToOne(mappedBy = "user")
 	@JoinColumn(name = "EMPLOYEE")
 	private Employee employee;
