@@ -16,7 +16,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = DeptNameIsExistValidator.class)
 public @interface DeptNameIsExist {
 
-	String message() default "hello";
+	String message() default "{Dept.MSG.NAME_IS_EXIST}";
 
 	Class<?>[] groups() default {};
 
