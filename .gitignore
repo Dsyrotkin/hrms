@@ -1,6 +1,7 @@
 
 target/**
 .settings/**
+bin/**
 /target/
 
 target/m2e-wtp/web-resources/META-INF/maven/hrms/hrms/pom.xml
