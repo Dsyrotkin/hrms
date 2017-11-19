@@ -7,6 +7,7 @@ import com.hrms.domain.Department;
 public interface DepartmentService {
 	
 	public List<Department> getAllDepartments();
+	public List<Department> getDepartmentsByName(String name);
 	public Department getDepartment(Long id);
 	public void deleteDepartment(Long id);
 	public Department SaveDepartment(Department department);
