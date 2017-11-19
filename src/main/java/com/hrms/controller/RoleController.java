@@ -3,6 +3,8 @@ package com.hrms.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -31,10 +33,24 @@ public class RoleController {
 	private GeneralHelper helper;
 	
 	@RequestMapping(value = "/admin/role", method = RequestMethod.GET)
+	public String addUserRolePage(Model model) {
+		model.addAttribute("roles",roleService.getAll());
+		return "role";
+	}
+	
+	
+	@RequestMapping(value = "/admin/role/add", method = RequestMethod.GET)
 	public String addRolePage(Model model) {
 		model.addAttribute("roles",roleService.getAll());
 		return "role";
 	}
+	
+	@RequestMapping(value = "/admin/role/add", method = RequestMethod.POST)
+	public String addRolePost(Model model) {
+		model.addAttribute("roles",roleService.getAll());
+		return "role";
+	}
+	
 	
 	
 	@RequestMapping(value = "/admin/role/{rolename}", method = RequestMethod.GET)
@@ -44,10 +60,13 @@ public class RoleController {
 	}
 	
 	@RequestMapping(value = "/admin/role/add/{username}", method = RequestMethod.POST, produces = "application/json", consumes="application/json")
-	public @ResponseBody User addRole(@RequestBody Role role,@PathVariable("username") String username ,Model model) {
+	public @ResponseBody ResponseEntity<User> addRoleToUser(@RequestBody Role role,@PathVariable("username") String username ,Model model) {
 		User user = userService.getUserByUsername(username);
-		user.getRoles().add(role);
-		return userService.save(user);
+		if(user != null) {
+			user.getRoles().add(role);
+			return new ResponseEntity<>(userService.save(user),HttpStatus.OK);
+		}
+		return new ResponseEntity<>(user,HttpStatus.BAD_REQUEST);
 	}
 	
 	

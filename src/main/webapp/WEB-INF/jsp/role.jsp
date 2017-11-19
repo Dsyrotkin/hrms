@@ -31,6 +31,8 @@
 										<button class="btn btn-default" type="button" onclick="addRole(${role.id},'${role.name}')">Add</button>
 									</span> <input id="input_${role.name}" type="text" class="form-control" placeholder ="Username">
 								</div>
+								<div id="alert_${role.name}" style="display: none" class ="alert alert-danger" role="alert">Username doesn't exist</div>
+								<div id="success_${role.name}" style="display: none" class ="alert alert-success" role="alert">Role has been successfully given the user.</div>
 							</div>
 							<div id="list_${role.name}" class="list-group">
 								<a href="#" class="list-group-item active"> Cras justo odio

@@ -2,6 +2,8 @@
 	function addRole(role_id,role_name){
 		var roleData = {"id" : role_id, "name" : role_name};
 		var username = $('#input_' + role_name).val();
+		$('#alert_' + role_name).hide();
+		$('#success_' + role_name).hide();
 		$.ajax({
 			url: '/hrms/admin/role/add/' + username,
 			type: 'POST',
@@ -9,11 +11,11 @@
 			contentType: 'application/json',
 			dataType: "json",
 			success: function(response){
-				alert("Role Successfully added");
+				$('#success_' + role_name).show();
 				$('#list_' + role_name).append('<a href="#" class="list-group-item">'+ response.username +'</a>');
 			},
 			error: function(){						
-				alert('Error while request..');
+				$('#alert_' + role_name).show();
 			}
 		});
 	}
@@ -49,6 +51,8 @@ $(document).ready(function() {
 	   
 	function displayUsers(users,rolename) {
 		$('#list_' + rolename).html("");
+		$('#alert_' + rolename).hide();
+		$('#success_' + rolename).hide();
 		for(var i = 0 ; i < users.length; i++)
 			{
 			$('#list_' + rolename).append('<a href="#" class="list-group-item">'+ users[i].username +'</a>');
