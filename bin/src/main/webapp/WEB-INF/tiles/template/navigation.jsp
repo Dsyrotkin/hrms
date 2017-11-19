@@ -5,8 +5,6 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
-<c:url var="image" value="/resources/img" />
-<c:url var="context" value="/"/>
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -19,7 +17,7 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#"><img alt="Octagon HRMS"
-				src="${image}/logo-32.png"/></a>
+				src="resources/img/logo-32.png"/></a>
 		</div>
 
 		<!-- if user is logged in, show below -->
@@ -43,8 +41,8 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Project <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="${context}project/list">List Projects</a></li>
-						<li><a href="${context}project/new">Add Project</a></li>
+						<li><a href="#">List Projects</a></li>
+						<li><a href="#">Add Project</a></li>
 						
 						<!-- <li role="separator" class="divider"></li> -->						
 					</ul>
@@ -61,9 +59,9 @@
 				</security:authorize>
 				
 				<li><security:authorize access="!isAuthenticated()">
-						<a href="${context}login">Login</a>
+						<a href="<c:url value="login" />">Login</a>
 					</security:authorize> <security:authorize access="isAuthenticated()">
-						<a href="${context}logout">Logout</a>
+						<a href="<c:url value="/logout" />">Logout</a>
 					</security:authorize>
 				</li>
 				
@@ -71,7 +69,7 @@
 					<a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">
-						<img alt="Language" src="${image}/earth-22.png"/>
+						<img alt="Language" src="resources/img/earth-22.png"/>
 						<span class="caret"></span>
 					</a>
 				<ul class="dropdown-menu">

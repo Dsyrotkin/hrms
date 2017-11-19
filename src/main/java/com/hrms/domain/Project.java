@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Table;
 
@@ -41,10 +42,11 @@ public class Project implements Serializable {
 	private String description;
 	
 	@Column(name = "START_DATE")
-	//@Date(pattern="MM/DD/YYYY")
+	@DateTimeFormat(pattern="mm-dd-yy")
 	private Date startDate;
 	
 	@Column(name = "END_DATE")
+	@DateTimeFormat(pattern="mm-dd-yy")
 	private Date endDate;
 	
 	@ManyToOne
