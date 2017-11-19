@@ -4,7 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
-
+<spring:url var="JS" value="/resources/js"/>
+<spring:url var="CSS" value="/resources/css"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +14,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${JS}/jquery-ui.min.js"></script>
 
 <title><tiles:insertAttribute name="title" /></title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="${CSS}/jquery-ui.min.css">
 
 </head>
 

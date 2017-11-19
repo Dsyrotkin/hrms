@@ -25,6 +25,24 @@
 		
 	</definition>
 	
+	<definition name="projectList" extends="baseLayout">
+		<put-attribute name="title" value="Projects"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/project/projectList.jsp"></put-attribute>
+		
+	</definition>
+	
+	<definition name="projectForm" extends="baseLayout">
+		<put-attribute name="title" value="New Project"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/project/projectForm.jsp"></put-attribute>
+		
+	</definition>
+	
+	<definition name="projectSaved" extends="baseLayout">
+		<put-attribute name="title" value="Project Details"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/project/projectSaved.jsp"></put-attribute>
+		
+	</definition>
+	
 	<definition name="department" extends="baseLayout">
 		<put-attribute name="title" value="Login"/>
 		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp"></put-attribute>
