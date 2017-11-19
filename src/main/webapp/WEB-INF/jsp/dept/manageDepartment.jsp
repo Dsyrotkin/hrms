@@ -10,12 +10,11 @@
 			<div class="panel-heading"><spring:message code="Dept.Manage" /></div>
 			<div class="panel-body">
 
-				<form:form modelAttribute="dept" method="post" action="searchDept" id="deptForm">
+				<form:form modelAttribute="dept" method="post"  id="deptForm">
 
 					<div class="form-group">
 						<label for="username"><spring:message code="Dept.NAME" /></label>
-						<form:input cssClass="form-control" id="deptName" name="deptName"
-							path="name" />
+						<form:input cssClass="form-control" id="deptName" name="deptName" path="name" />
 					</div>
 
 					<br />
@@ -33,7 +32,7 @@
 						<tbody>
 							<c:if test="${empty depts}">
 								<tr>
-									<td colspan="8"><spring:message code="GenNO_RECORDS" /></td>
+									<td colspan="8"><spring:message code="Gen.NO_RECORDS" /></td>
 								</tr>
 							</c:if>
 							<c:if test="${not empty depts}">
@@ -54,24 +53,20 @@
 
 
 					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" value="Search" /> <input
-							type="submit" class="btn btn-primary" value="Add New" />
-						<form:button />
+						<input type="submit" class="btn btn-primary" value="Search" onClick="changeAction('searchDept')" /> 
+						<input	type="submit" class="btn btn-primary" value="Add New" onClick="changeAction('addNewDept')"/>
+				
 
 					</div>
 
 					<script type="text/javascript">
 					
-						function changeAction(url)
-						{
-							document.getElementById("deptForm").action = 'searchDept';
-					
-							//document.this_form.action = "http://google.com";
+						function changeAction(actionName) {
+							document.getElementById("deptForm").action = actionName;
 						}
 				
 					</script>
 
-						<input type="submit"  value="Add New"	onClick="changeAction('addNewDept')"/>
 				</form:form>
 			</div>
 		</div>

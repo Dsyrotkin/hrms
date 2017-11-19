@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name="DEPARTMENT")
 public class Department implements Serializable {
@@ -24,9 +26,11 @@ public class Department implements Serializable {
 	@Column(name = "ID")
 	private long id;
 	
+	@NotBlank
 	@Column(name = "NAME")
 	private String name;
 	
+	@NotBlank
 	@Column(name = "DESCRIPTION")
 	private String description;
 	

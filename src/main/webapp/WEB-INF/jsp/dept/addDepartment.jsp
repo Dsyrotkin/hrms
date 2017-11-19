@@ -10,7 +10,7 @@
 			<div class="panel-heading"><spring:message code="Dept.Manage" /></div>
 			<div class="panel-body">
 
-				<form:form modelAttribute="newDept" method="post"  id="deptForm">
+				<form:form modelAttribute="newDept" method="post" action="saveNewDept"  id="deptForm">
 
 					<div class="form-group">
 						<label for="name"><spring:message code="Dept.NAME" /></label>
@@ -31,22 +31,22 @@
 
 					<div class="form-group text-right">
 						<input type="submit" class="btn btn-primary" value="Save" /> 
+						<input type="submit" class="btn btn-primary" value="Cancel" onclick="changeAction('manageDept')" /> 
+						
 
 					</div>
 
+				</form:form>
+				
 					<script type="text/javascript">
 					
-						function changeAction(myAction)
-						{
-							document.getElementById("deptForm").action = myAction;
-					
-							//document.this_form.action = "http://google.com";
+						function changeAction(actionName) {
+							document.getElementById("deptForm").action = actionName;
+							document.getElementById("deptForm").method = 'GET'
 						}
 				
 					</script>
-
-						<input type="submit"  value="<spring:message code="Gen.SAVE" />" onClick="changeAction('saveNewDept')"/>
-				</form:form>
+					
 			</div>
 		</div>
 	</div>

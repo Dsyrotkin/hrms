@@ -19,10 +19,11 @@ public class DepartmentController {
 	DepartmentService departmentService;
     
 	@GetMapping("/manageDept")
-	public String manageDepartment(@ModelAttribute(name="dept") Department dept,Model model) {
+	public String manageDepartment(Model model) {
+		model.addAttribute("dept", new Department());
 		model.addAttribute("depts", departmentService.getAllDepartments());
 		
-		return "manageDepartment";
+		return "dept/manageDepartment";
 	}
 	
 	@PostMapping("/searchDept")
@@ -34,22 +35,26 @@ public class DepartmentController {
 			model.addAttribute("depts", departmentService.getDepartmentsByName(dept.getName()));
 		}
 		
-		return "manageDepartment";
+		return "dept/manageDepartment";
 	}
 	
 	@PostMapping("addNewDept")
-	public String addDepartment(@ModelAttribute("newDept") Department department,Model model) {
-		
-		return "deptForm";
+	public String addDepartment(Model model) {
+		model.addAttribute("newDept", new Department());
+
+		return "dept/addDepartment";
 	}
 	
 	@PostMapping("saveNewDept")
 	public String saveDepartment(@Valid @ModelAttribute(name="newDept") Department dept,BindingResult bindingResult, Model model) {
 		
 		if(bindingResult.hasErrors()) {
-			return "addNewDept";
+			return "dept/addDepartment";
 		}else {
 			departmentService.SaveDepartment(dept);	
+			dept.setDescription("Mohammad Weshah");
+			departmentService.SaveDepartment(dept);
+			
 			return "redirect:/manageDept";
 		}
 	}
