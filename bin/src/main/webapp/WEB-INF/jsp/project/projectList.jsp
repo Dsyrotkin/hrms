@@ -34,8 +34,8 @@
 							<tr>
 								<td>
 									<ul class="nav navbar-nav">
-										<li><a href="${context}project/edit/${project.id}" title="edit"><span class="glyphicon glyphicon-pencil"></span></a></li>
-										<li><a href="${context}project/remove/${project.id}" title="delete"><span class="glyphicon glyphicon-remove"></span></a></li>
+										<li><a href="${context}project/edit/${project.id}" title="edit"><span class="glyphicon glyphicon-pencil"/></a></li>
+										<li><a href="${context}project/remove/${project.id}" title="delete"><span class="glyphicon glyphicon-remove"/></a></li>
 									</ul>
 								</td>
 								<td>${project.name}</td>
