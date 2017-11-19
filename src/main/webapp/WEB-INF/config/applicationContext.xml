@@ -11,6 +11,8 @@
       http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 
+	
+	
 	<jpa:repositories base-package="com.hrms.repositories" entity-manager-factory-ref="entityManager"  />
 
 	<bean id="entityManager"
@@ -48,6 +50,7 @@
 		<property name="entityManagerFactory" ref="entityManager" />
 	</bean>
 
+	<bean class="org.springframework.data.web.config.SpringDataWebConfiguration" />
 	<!-- Scan for transaction-based resources -->
 	<context:component-scan base-package="com.hrms.service.serviceimpl" />
 	<context:component-scan base-package="com.hrms.domain" />

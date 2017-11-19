@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,28 +32,37 @@ public class ProjectController {
 		return "projectList";
 	}
 	
-	@RequestMapping(value="project", method=RequestMethod.GET)
+	@RequestMapping(value="new", method=RequestMethod.GET)
 	public String project(@ModelAttribute("project") Project project) {
-		return "productForm";
+		return "projectForm";
 	}
 	
 	@RequestMapping(value="edit/{id}", method=RequestMethod.GET)
-	public String projectEdit(Model model, @PathVariable Long id) {
-		Project project = projectService.getById(id);
+	public String projectEdit(Model model, @PathVariable String id) {
+		
+		Project project = projectService.getById(Long.parseLong(id));
 		model.addAttribute("project", project);
-		return "productForm";
+		return "projectForm";
 	}
 	
-	@RequestMapping(value="project", method=RequestMethod.POST)
+	@RequestMapping(value="save", method=RequestMethod.POST)
 	public String save(@Valid @ModelAttribute("project") Project project, BindingResult br, RedirectAttributes ra) {
 		
 		if(br.hasErrors()) {
-			return "productForm";
+			return "projectForm";
 		}
 		Project savedProject = projectService.save(project);
 		
 		ra.addFlashAttribute("project", savedProject);
 		return "redirect:/project/success";
+	}
+	
+	@RequestMapping(value="remove/{id}", method=RequestMethod.GET)
+	public String remove(Model model, @PathVariable String id, RedirectAttributes ra) {
+		
+		projectService.remove(Long.parseLong(id));
+		ra.addFlashAttribute("message", "Project deleted successfully");
+		return "redirect:/project/list";
 	}
 	
 	@RequestMapping(value="success", method=RequestMethod.GET)
