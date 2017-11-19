@@ -15,8 +15,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+
 
 @Entity
 @Table(name="USER")
@@ -30,7 +32,7 @@ public class User implements Serializable {
 	private long id;
 	
 	@Column(name = "USERNAME")
-	private String userName;
+	private String username;
 	
 	@Column(name = "PASSWORD")
 	private String password;
@@ -38,6 +40,14 @@ public class User implements Serializable {
 	@Column(name = "ENABLED")
 	private boolean enabled;
 	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	@OneToOne(mappedBy = "user")
 	@JoinColumn(name = "EMPLOYEE")
 	private Employee employee;
@@ -55,12 +65,12 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String userName) {
+		this.username = userName;
 	}
 
 	public String getPassword() {
