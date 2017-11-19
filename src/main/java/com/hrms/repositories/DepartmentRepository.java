@@ -15,6 +15,9 @@ public interface DepartmentRepository extends CrudRepository<Department, Long>{
 	@Query("SELECT U FROM Department U WHERE LOWER(U.name) LIKE %:name1%)")
 	public List<Department> getDepartmentsLikeName(@Param("name1") String name);
 	
+//	@Query("SELECT U FROM Department U WHERE LOWER(U.name) LIKE %:name1%)")
+	public Department getByIdNotAndName(long id,String name);
 	
+	public Department getByName(String name);
 
 }

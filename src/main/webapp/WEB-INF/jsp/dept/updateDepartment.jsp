@@ -7,23 +7,29 @@
 	<div class="col-xs-3 col-md-3"></div>
 	<div class="col-xs-6 col-md-6">
 		<div class="panel panel-default">
-			<div class="panel-heading"><spring:message code="Dept.Manage" /></div>
+			<div class="panel-heading">
+				<spring:message code="Dept.Manage" />
+			</div>
 			<div class="panel-body">
 
-				<form:form modelAttribute="newDept" method="post" action="saveNewDept"  id="deptForm">
-				<form:errors path="*"/>
+				<form:form modelAttribute="updateDept" method="post"
+					action="saveUpdateDept" id="deptForm">
+					<form:errors path="*" />
+					<input type="hidden" name="id" id="id" value="${updateDept.id}" />
 
 					<div class="form-group">
 						<label for="name"><spring:message code="Dept.NAME" /></label>
-						<form:input cssClass="form-control" id="deptName" name="name" path="name" />
+						<form:input cssClass="form-control" id="deptName" name="name"
+							path="name" />
 						<form:errors path="name" />
 					</div>
-					
+
 					<div class="form-group">
 						<label for="description"><spring:message code="Dept.DESC" /></label>
-						<form:input cssClass="form-control" id="description" name="description" path="description" />
+						<form:input cssClass="form-control" id="description"
+							name="description" path="description" />
 						<form:errors path="description" />
-					</div>					
+					</div>
 
 					<br />
 					<br />
@@ -31,23 +37,22 @@
 
 
 					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" value="Save" /> 
-						<input type="submit" class="btn btn-primary" value="Cancel" onclick="changeAction('manageDept')" /> 
-						
+						<input type="submit" class="btn btn-primary" value="Save" /> <input
+							type="submit" class="btn btn-primary" value="Cancel"
+							onclick="changeAction('manageDept')" />
+
 
 					</div>
 
 				</form:form>
-				
-					<script type="text/javascript">
-					
-						function changeAction(actionName) {
-							document.getElementById("deptForm").action = actionName;
-							document.getElementById("deptForm").method = 'GET'
-						}
-				
-					</script>
-					
+
+				<script type="text/javascript">
+					function changeAction(actionName) {
+						document.getElementById("deptForm").action = actionName;
+						document.getElementById("deptForm").method = 'GET'
+					}
+				</script>
+
 			</div>
 		</div>
 	</div>

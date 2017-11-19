@@ -27,6 +27,7 @@
 								<th><spring:message code="Dept.ID" /></th>
 								<th><spring:message code="Dept.NAME" /></th>
 								<th><spring:message code="Dept.DESC" /></th>
+								<th colspan="2"><spring:message code="Gen.ACTIONS" /></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -42,7 +43,12 @@
 										<td>${deptBean.id}</td>
 										<td>${deptBean.name}</td>
 										<td>${deptBean.description}</td>
-										<td></td>
+										<td>
+										  <a href=<spring:url value="/updateDept?id=${deptBean.id}"></spring:url>><spring:message code="Gen.UPDATE" /></a>
+										</td>
+										<td>
+										  <a href=<spring:url value="/deleteDept?id=${deptBean.id}"></spring:url>><spring:message code="Gen.DELETE" /></a>
+										</td>
 
 									</tr>
 								</c:forEach>
