@@ -43,6 +43,7 @@
 		<property name="url" value="jdbc:mysql://localhost:3306/hrms" />
 		<property name="username" value="hrms" />
 		<property name="password" value="mum1234" />		
+
 	</bean>
 
 
