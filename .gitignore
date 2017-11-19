@@ -7,3 +7,5 @@ target/classes/com/hrms/controller/IndexController.class
 *.class
 target/classes/log4j.properties
 /target/
+.classpath
+.springBeans
