@@ -28,12 +28,6 @@ $(document).ready(function() {
 		});
 
 
-	 // Click on Product [row]  in cart
-	$("#cart_table").find("tr").click(function() {  
-		var productId=  $(this).find("td:first").html();
-		
-		});
-
 	// Get product object from Server...
 	function getUsersByRoleName(rolename) {
 		$.ajax({
