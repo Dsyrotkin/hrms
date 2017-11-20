@@ -11,8 +11,19 @@
 			contentType: 'application/json',
 			dataType: "json",
 			success: function(response){
+				$('#success_' + role_name).html("Role has been successfully given the user.");
 				$('#success_' + role_name).show();
-				$('#list_' + role_name).append('<a href="#" class="list-group-item">'+ response.username +'</a>');
+				$('#list_' + role_name).append('<a id="'+ username + role_name +'" href="#" class="list-group-item">'+ username
+						+'<span class="pull-right">' +
+						'<span id="buttondelete_'+ username + role_name +'" class="btn btn-xs btn-danger">' +
+						'<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
+						'</span>' +
+						'</span>' 
+	           + '</a>');
+				
+				$("#buttondelete_"+ username + role_name).click(function(){
+					deleteRole(username,role_name)
+				});
 			},
 			error: function(response){				
 				if(response.status == 409)
@@ -26,6 +37,28 @@
 					$('#alert_' + role_name).show();
 					}
 			
+			}
+		});
+	}
+	
+	function deleteRole(username,role_name){
+		var roleData = {"id" : null, "name" : role_name};
+		$('#alert_' + role_name).hide();
+		$('#success_' + role_name).hide();
+		$.ajax({
+			url: '/hrms/admin/role/delete/' + username,
+			type: 'POST',
+			data: JSON.stringify(roleData),
+			contentType: 'application/json',
+			dataType: "json",
+			success: function(response){
+				$('#success_' + role_name).html("User role has been deleted");
+				$('#success_' + role_name).show();
+				$('#'+ username + role_name).remove();
+			},
+			error: function(response){				
+					$('#alert_' + role_name).html("Error occured while deleting.");
+					$('#alert_' + role_name).show();
 			}
 		});
 	}
@@ -59,7 +92,18 @@ $(document).ready(function() {
 		$('#success_' + rolename).hide();
 		for(var i = 0 ; i < users.length; i++)
 			{
-			$('#list_' + rolename).append('<a href="#" class="list-group-item">'+ users[i].username +'</a>');
+			var username = users[i].username;
+			$('#list_' + rolename).append('<a id="'+ username + rolename +'" href="#" class="list-group-item">'+ username
+					+ '<span class="pull-right">' +
+					'<span id="buttondelete_'+ username + rolename +'" class="btn btn-xs btn-danger">' +
+					'<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
+					'</span>' +
+					'</span>' 
+           + '</a>');
+			
+			$("#buttondelete_"+users[i].username + rolename).click(function(){
+				deleteRole(username,rolename)
+			});
 			}
 		
 //		$('#list_' + rolename).attr("style", "display: block")

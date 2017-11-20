@@ -37,7 +37,13 @@ public class RoleServiceImpl implements RoleService{
 	@Override
 	public Role getByName(String name) {
 		// TODO Auto-generated method stub
-		return roleRepository.findRoleByName(name);
+		return roleRepository.findByName(name);
+	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		roleRepository.delete(id);
 	}
 	
 

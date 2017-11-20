@@ -86,4 +86,16 @@ public class RoleController {
 	}
 	
 	
+	@RequestMapping(value = "/admin/role/delete/{username}", method = RequestMethod.POST, produces = "application/json", consumes="application/json")
+	public @ResponseBody ResponseEntity<User> deleteUserRole(@RequestBody Role role,@PathVariable("username") String username ,Model model) {
+		User user = userService.getUserByUsername(username);
+		if(user != null) {
+			user.getRoles().removeIf((r) -> role.getName().equals(r.getName()));
+			return new ResponseEntity<>( userService.save(user) ,HttpStatus.OK);
+		}
+		return new ResponseEntity<>(user,HttpStatus.BAD_REQUEST);
+	}
+	
+	
+	
 }

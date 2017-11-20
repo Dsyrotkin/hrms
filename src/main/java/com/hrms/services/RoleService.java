@@ -10,4 +10,5 @@ public interface RoleService {
 	public List<Role> getAll();
 	public Role getByName(String name);
 	public Role save(Role role);
+	public void delete(Long id);
 }
