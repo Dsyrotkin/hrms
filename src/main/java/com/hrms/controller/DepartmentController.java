@@ -1,5 +1,7 @@
 package com.hrms.controller;
 
+import java.sql.SQLException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,19 +21,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.hrms.domain.Department;
+import com.hrms.exc.exception.OperationResult;
+import com.hrms.exc.exception.ValidationErrorDTO;
 import com.hrms.services.DepartmentService;
 
 @Controller
 public class DepartmentController {
 	@Autowired
 	DepartmentService departmentService;
+	
+//	@Autowired
+//	private MessageSourceAccessor messageSourceAccessor;
 
 	@GetMapping("/manageDept")
 	public String manageDepartment(Model model) {
 		model.addAttribute("dept", new Department());
 		model.addAttribute("depts", departmentService.getAllDepartments());
 
-		return "dept/manageDepartment";
+		return "manageDepartment";
 	}
 
 	@PostMapping("/searchDept")
@@ -44,14 +50,14 @@ public class DepartmentController {
 			model.addAttribute("depts", departmentService.getDepartmentsByName(dept.getName()));
 		}
 
-		return "dept/manageDepartment";
+		return "manageDepartment";
 	}
 
-	@PostMapping("addNewDept")
+	@RequestMapping("addNewDept")
 	public String addDepartment(Model model) {
 		model.addAttribute("newDept", new Department());
 
-		return "dept/addDepartment";
+		return "addDepartment";
 	}
 
 	@PostMapping("saveNewDept")
@@ -59,7 +65,7 @@ public class DepartmentController {
 			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-			return "dept/addDepartment";
+			return "addDepartment";
 		} else {
 			departmentService.SaveDepartment(dept);
 
@@ -71,7 +77,7 @@ public class DepartmentController {
 	public String updateDepartment(@RequestParam("id") long id, Model model) {
 		model.addAttribute("updateDept", departmentService.getDepartment(id));
 
-		return "dept/updateDepartment";
+		return "updateDepartment";
 	}
 
 	@PostMapping("saveUpdateDept")
@@ -79,7 +85,7 @@ public class DepartmentController {
 			BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-			return "dept/updateDepartment";
+			return "updateDepartment";
 		} else {
 			departmentService.SaveDepartment(dept);
 
@@ -87,11 +93,38 @@ public class DepartmentController {
 		}
 	}
 
-	@RequestMapping(value="deleteDep/{id}",method=RequestMethod.GET/*,produces="application/json"*/)
-	public void deleteDepartment(@PathVariable(name="id") long id) {
+	@RequestMapping(value="deleteDep/{id}",method=RequestMethod.POST,produces="application/json")
+	public @ResponseBody OperationResult  deleteDepartment(@PathVariable(name="id") long id) {
 		departmentService.deleteDepartment(id);
-
+		
+		OperationResult operationResult = new OperationResult();
+		operationResult.setMessage("The Department has been deleted successfully ");
+		operationResult.setSuccces(true);
+		
+		return operationResult;
 	}
+	
+	@GetMapping("viewDept")
+	public String viewDepartment(@RequestParam("id") long id, Model model) {
+		model.addAttribute("viewDept", departmentService.getDepartment(id));
+
+		return "viewDepartment";
+	}
+	
+
+	@ExceptionHandler(SQLException.class)
+//	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	public OperationResult processValidationError(SQLException ex) {
+		OperationResult operationResult = new OperationResult();
+		operationResult.setSuccces(false);
+		operationResult.setMessage(ex.getMessage());
+        
+		return operationResult;
+	}
+	
 
 
 }
+
+
