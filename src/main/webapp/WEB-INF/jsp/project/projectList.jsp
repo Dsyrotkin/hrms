@@ -15,7 +15,26 @@
 			${message}</div>
 		</c:if>
 		<div class="panel panel-default">
-			<div class="panel-heading">Project List <span class="badge">${projects.size()}</span> found</div>
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col-xs-6 col-md-6">Project List <span class="badge">${projects.size()}</span> found </div>
+					<div class="colxs-6 col-md-6 text-right">
+						<form id="searchform" action="${context}project/search">
+							<div class="form-group">
+								<div class="input-group">
+									<input type="text" name="projectname" id="search" placeholder="Search" class="form-control ui-autocomplete-input"/>
+									<input  hidden="true" type="text" name="projectid" id="projectid"/>
+									<span class="input-group-btn" id="basic-addon2">
+										<button type="submit" class="btn btn-default">
+											<span class="glyphicon glyphicon-search"></span>
+										</button>
+									</span>						
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>				
+			</div>
 			<div class="panel-body">
 				<c:url var="loginUrl" value="/login" />
 				<table class="table table-bordered table-hover table-responsive">
@@ -62,3 +81,37 @@
 	</div>
 	<div class="col-xs-2  col-md-2"></div>
 </div>
+
+<script type="text/javascript">
+<!--
+
+
+//-->
+$(document).ready(function(){
+var mycontext = window.location.pathname.split("/")[1];
+console.log("context=" + mycontext);
+$( "#search" ).autocomplete({
+        source: function( request, response ) {
+            $.ajax( {
+              url: "/" + mycontext + "/project/autocomplete",
+              dataType: "json",
+              data: {
+            	 term: $("#search").val()
+              },
+              success: function( data ) {
+            	  console.log("data=" + data.length);
+                response( data );
+              }
+            } );
+          },
+	minLength: 0,
+	select: function (event, ui){
+	event.preventDefault()
+	console.log("ui=" + ui);
+	$("#search").val(ui.item.label);
+	$("#projectid").val(ui.item.value);
+	$('#searchform').submit();
+	}
+});
+});
+</script>
