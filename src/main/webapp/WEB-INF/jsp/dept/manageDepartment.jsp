@@ -51,11 +51,15 @@
 							<c:if test="${not empty depts}">
 
 								<c:forEach items="${depts}" var="deptBean">
-									<tr class="">
+									<tr id='${deptBean.id}'>
 										<td>${deptBean.id}</td>
 										<td>${deptBean.name}</td>
 										<td>${deptBean.description}</td>
-										<td><a
+										<td>
+										<a
+											href=<spring:url value="/viewDept?id=${deptBean.id}"></spring:url>><spring:message
+													code="Gen.VIEW" /></a>
+										<a
 											href=<spring:url value="/updateDept?id=${deptBean.id}"></spring:url>><spring:message
 													code="Gen.UPDATE" /></a></td>
 										<td><a onclick="deleteSubmit(${deptBean.id})"><spring:message
@@ -72,7 +76,7 @@
 					<div class="form-group text-right">
 						<input type="submit" class="btn btn-primary" value="Search"
 							onClick="changeAction('searchDept')" /> <input type="submit"
-							class="btn btn-primary" value="Add New"
+							class="btn btn-success" value="Add New"
 							onClick="changeAction('addNewDept')" />
 
 

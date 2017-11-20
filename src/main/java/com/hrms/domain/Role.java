@@ -11,8 +11,12 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.hrms.validator.DeptNameIsExist;
+import com.hrms.validator.RoleNameIsExist;
+
 @Entity
 @Table(name="ROLE")
+@RoleNameIsExist
 public class Role implements Serializable {
 
 	private static final long serialVersionUID = 224532666063067699L;
