@@ -51,9 +51,7 @@
 						<!-- <li role="separator" class="divider"></li> -->						
 					</ul>
 				</li>
-				
-<<<<<<< HEAD
-=======
+
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Department <span class="caret"></span></a>
@@ -64,9 +62,8 @@
 						<!-- <li role="separator" class="divider"></li> -->						
 					</ul>
 				</li>
-				
-				<security:authorize access="hasRole('ROLE_ADMIN')">
->>>>>>> master
+
+
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Admin <span class="caret"></span></a>
