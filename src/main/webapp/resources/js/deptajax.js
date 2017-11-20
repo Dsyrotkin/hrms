@@ -15,7 +15,7 @@ function deleteSubmit(deptId){
 			alert(dataObj.succces)
 			$('#result').html("");
 			$('#errors').html("");
- 			$("#result").append( '<H3 align="center"> The Recored Has Been Deleted Successfully <H3>');                
+ 			$("#result").append( '<div class="alert alert-success"> <p>The Recored Has Been Deleted Successfully</p></div>');                
 	 	    $('#result').show();
 	 	    
 	 	    $('#'+deptId).remove();
@@ -27,10 +27,8 @@ function deleteSubmit(deptId){
 			if (errorObject.responseJSON.succces == "false") {
 	 			$('#success').html("");
 	 			$('#errors').html("");
-	 			$("#errors").append( '<H3 align="center"> Error(s)!! <H3>');                
-	  			    $("#result").append( '<p>');
-	  	
-	 	 	        $("#errors").append( errorObject.responseJSON.message +'</p>');
+	 			$("#errors").append( '');                
+	  			    $("#result").append( '<div class="alert alert-danger"> <p>'+errorObject.responseJSON.message +'</p></div>');  
 	 	 	        $('#result').show();
 			}else {
 				alert(errorObject.responseJSON.errors(0));   // "non" Validation Error
