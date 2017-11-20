@@ -18,8 +18,12 @@
 <script type="text/javascript" src="${JS}/role.js"></script>
 <title><tiles:insertAttribute name="title" /></title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="${CSS}/jquery-ui.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="${CSS}/lavish-bootstrap.css">
+<link rel="stylesheet" href="${CSS}/main.css">
+
+
 
 </head>
 
@@ -35,9 +39,9 @@
 			<tiles:insertAttribute name="body" />
 		</div>
 
-		<div class="footer">
+		<footer class="footer">
 			<tiles:insertAttribute name="footer" />
-		</div>
+		</footer>
 
 	</div>
 	

@@ -1,3 +1,18 @@
 .ui-autocomplete-loading {
-    background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
+    background: white url("../img/ui-anim_basic_16x16.gif") right center no-repeat;
   }
+  
+body{
+	background: url("../img/orange__white__grey___wallpaper_2560x1440_by_xanoth-d5x5dh1.png") center no-repeat;
+	background-size: 100% 100%;
+	min-height: 750px;
+}
+
+.panel-body{
+	
+}
+
+.footer{
+	position: absolute;
+	bottom:0px;
+}

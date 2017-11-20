@@ -18,30 +18,30 @@
 					<div class="form-group">
 						<label for="name">Name</label> 
 						<form:input class="form-control" id="name" path="name" />
-						<form:errors path="name"></form:errors>
+						<form:errors path="name" class="text-danger"></form:errors>
 					</div>
 					<div class="form-group">
 						<label for="description">Description</label> 
 						<form:input class="form-control" id="description" path="description" />
-						<form:errors path="description"></form:errors>
+						<form:errors path="description" class="text-danger"></form:errors>
 					</div>
 					<div class="form-group">
 						<label for="startDate">Start Date</label>
 						<fmt:formatDate pattern="MM-dd-yyyy" value="${project.startDate}" var="sdate"/>						
 						<form:input class="form-control" id="startDate" path="startDate" value="${sdate}"/>							
-						<form:errors path="startDate"></form:errors>
+						<form:errors path="startDate" class="text-danger"></form:errors>
 					</div>
 					<div class="form-group">
 						<label for="endDate">End Date</label>
 						<fmt:formatDate pattern="MM-dd-yyyy" value="${project.endDate}" var="edate"/>
 						<form:input class="form-control" id="endDate" path="endDate" value="${edate}"/>
-						<form:errors path="endDate"></form:errors>
+						<form:errors path="endDate" class="text-danger"></form:errors>
 					</div>
 					<div class="form-group">
 						<label for="department">Department</label> 
-						<form:select path="department.id" items="${departments}" itemValue="id" itemLabel="name"/>
+						<form:select class="form-control" path="department.id" items="${departments}" itemValue="id" itemLabel="name"/>
 						<%-- <form:input class="form-control" id="department" path="department.id" /> --%>						
-						<form:errors path="department.id"></form:errors>
+						<form:errors path="department.id" class="text-danger"></form:errors>
 					</div>
 					<div class="form-group text-right">
 						<input type="submit" class="btn btn-primary" value="Submit" />
