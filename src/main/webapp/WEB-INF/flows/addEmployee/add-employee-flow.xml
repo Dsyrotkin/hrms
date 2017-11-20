@@ -9,13 +9,13 @@
 </on-start>
 
 <view-state id="employeeForm" model="employee">
-	<transition on="submit" to="saveEmployee"/>
     <transition on="contacts" to="employeeContactsForm"/>
     <transition on="cancel" to="cancelRegistration"/>
 </view-state>
 
 <view-state id="employeeContactsForm" model="employee">
-    <transition on="return" to="employeeForm"/>
+    <transition on="save" to="saveEmployee"/>
+    <transition on="cancel" to="cancelRegistration"/>
 </view-state>
  
 <action-state id="saveEmployee">
