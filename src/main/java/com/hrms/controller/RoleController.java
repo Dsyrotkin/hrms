@@ -96,6 +96,17 @@ public class RoleController {
 		return new ResponseEntity<>(user,HttpStatus.BAD_REQUEST);
 	}
 	
+	@RequestMapping(value = "/admin/role/deleteRole", method = RequestMethod.POST, produces = "application/json", consumes="application/json")
+	public @ResponseBody ResponseEntity<Role> deleteRole(@RequestBody Role role, Model model) {
+		Role dbRes = roleService.getByName(role.getName());
+		if(dbRes != null)
+		{
+			roleService.delete(dbRes.getId());
+			return new ResponseEntity<>( role ,HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>( role ,HttpStatus.BAD_REQUEST);
+	}
 	
 	
 }

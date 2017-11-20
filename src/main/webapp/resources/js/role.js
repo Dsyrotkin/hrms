@@ -1,5 +1,5 @@
 
-	function addRole(role_id,role_name){
+	function addRoleUser(role_id,role_name){
 		var roleData = {"id" : role_id, "name" : role_name};
 		var username = $('#input_' + role_name).val();
 		$('#alert_' + role_name).hide();
@@ -22,7 +22,7 @@
 	           + '</a>');
 				
 				$("#buttondelete_"+ username + role_name).click(function(){
-					deleteRole(username,role_name)
+					deleteRoleUser(username,role_name)
 				});
 			},
 			error: function(response){				
@@ -41,7 +41,7 @@
 		});
 	}
 	
-	function deleteRole(username,role_name){
+	function deleteRoleUserConfirmed(username,role_name){
 		var roleData = {"id" : null, "name" : role_name};
 		$('#alert_' + role_name).hide();
 		$('#success_' + role_name).hide();
@@ -61,6 +61,71 @@
 					$('#alert_' + role_name).show();
 			}
 		});
+	}
+	
+	function deleteRoleUser(username,role_name){
+		
+		  $( function() {
+			    $( "#dialog-confirm" ).dialog({
+			      resizable: false,
+			      height: "auto",
+			      width: 400,
+			      modal: true,
+			      buttons: {
+			        "Delete": function() {
+			          $( this ).dialog( "close" );
+			          deleteRoleUserConfirmed(username,role_name);
+			        },
+			        Cancel: function() {
+			          $( this ).dialog( "close" );
+			        }
+			      }
+			    });
+			  } );
+		
+	}
+	
+	
+	function deleteRoleConfirmed(role_name){
+		var roleData = {"id" : null, "name": role_name};
+		$('#alert_' + role_name).hide();
+		$('#success_' + role_name).hide();
+		$.ajax({
+			url: '/hrms/admin/role/deleteRole',
+			type: 'POST',
+			data: JSON.stringify(roleData),
+			contentType: 'application/json',
+			dataType: "json",
+			success: function(response){
+				$('#success_' + role_name).html("Role has been deleted");
+				$('#success_' + role_name).show();
+				$('#tabtitle_' + role_name).remove();
+			},
+			error: function(response){				
+					$('#alert_' + role_name).html("Error occured while deleting.");
+					$('#alert_' + role_name).show();
+			}
+		});
+	}
+	
+	function deleteRole(role_name){
+		  $( function() {
+			    $( "#dialog-confirm" ).dialog({
+			      resizable: false,
+			      height: "auto",
+			      width: 400,
+			      modal: true,
+			      buttons: {
+			        "Delete": function() {
+			          $( this ).dialog( "close" );
+			          deleteRoleConfirmed(role_name);
+			        },
+			        Cancel: function() {
+			          $( this ).dialog( "close" );
+			        }
+			      }
+			    });
+			  } );
 	}
 	
 $(document).ready(function() {
@@ -102,7 +167,7 @@ $(document).ready(function() {
            + '</a>');
 			
 			$("#buttondelete_"+users[i].username + rolename).click(function(){
-				deleteRole(username,rolename)
+				deleteRoleUser(username,rolename)
 			});
 			}
 		
