@@ -5,8 +5,8 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <c:url var="context" value="/"/>
 <div class="row">
-	<div class="col-xs-2 col-md-2"></div>
-	<div class="col-xs-8 col-md-8">
+	<div class="col-xs-1 col-md-1"></div>
+	<div class="col-xs-10 col-md-10">
 		<c:if test="{not empty ${message}}">
 		<div class="alert alert-success">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -50,21 +50,19 @@
 								<td>${employee.address.zip}</td>
 								
 								<td>
-									<c:if test="${not empty project.department.name}">
-										<a href="department/${project.department.id}">${project.department.name}</a>
-									</c:if>
+									<a href="employee/${employee.id}">View Employee</a>
 								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="6" class="text-center info"><!-- pagination code --></td>
+							<td colspan="9" class="text-center info"><!-- pagination code --></td>
 						</tr>
 					</tfoot>
 				</table>
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-2  col-md-2"></div>
+	<div class="col-xs-1  col-md-1"></div>
 </div>
