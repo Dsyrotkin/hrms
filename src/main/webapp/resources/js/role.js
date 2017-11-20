@@ -14,8 +14,18 @@
 				$('#success_' + role_name).show();
 				$('#list_' + role_name).append('<a href="#" class="list-group-item">'+ response.username +'</a>');
 			},
-			error: function(){						
-				$('#alert_' + role_name).show();
+			error: function(response){				
+				if(response.status == 409)
+					{
+					$('#alert_' + role_name).html("Username already exist in this role");
+					$('#alert_' + role_name).show();
+					}
+				else
+					{
+					$('#alert_' + role_name).html("Username doesn't exist in database");
+					$('#alert_' + role_name).show();
+					}
+			
 			}
 		});
 	}

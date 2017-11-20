@@ -73,9 +73,15 @@ public class RoleController {
 	public @ResponseBody ResponseEntity<User> addRoleToUser(@RequestBody Role role,@PathVariable("username") String username ,Model model) {
 		User user = userService.getUserByUsername(username);
 		if(user != null) {
+			if(user.getRoles().stream().anyMatch(r -> role.getName().equals(r.getName())))
+			{
+				return new ResponseEntity<>(user,HttpStatus.CONFLICT);
+			}
+			
 			user.getRoles().add(role);
 			return new ResponseEntity<>(userService.save(user),HttpStatus.OK);
 		}
+		
 		return new ResponseEntity<>(user,HttpStatus.BAD_REQUEST);
 	}
 	

@@ -33,6 +33,12 @@ public class RoleServiceImpl implements RoleService{
 		// TODO Auto-generated method stub
 		return roleRepository.save(role);
 	}
+
+	@Override
+	public Role getByName(String name) {
+		// TODO Auto-generated method stub
+		return roleRepository.findRoleByName(name);
+	}
 	
 
 }
