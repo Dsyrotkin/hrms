@@ -8,30 +8,49 @@
 	<div class="col-xs-6 col-md-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<spring:message code="Dept.Manage" />
+				
 			</div>
 			<div class="panel-body">
 
-				<form:form modelAttribute="updateDept" method="post"
+				<form:form modelAttribute="viewDept" method="post"
 					action="saveUpdateDept" id="deptForm">
 					<form:errors path="*" />
-					<input type="hidden" name="id" id="id" value="${updateDept.id}" />
+					<input type="hidden" name="id" id="id" value="${viewDept.id}" />
 
 					<div class="form-group">
 						<label for="name"><spring:message code="Dept.NAME" /></label>
 						<form:input cssClass="form-control" id="deptName" name="name"
-							path="name" />
+							path="name" readonly="true"/>
 						<form:errors path="name" />
 					</div>
 
 					<div class="form-group">
 						<label for="description"><spring:message code="Dept.DESC" /></label>
 						<form:input cssClass="form-control" id="description"
-							name="description" path="description" />
+							name="description" path="description" readonly="true"/>
 						<form:errors path="description" />
 					</div>
 					
-
+					<div class="form-group">
+						<label for="description"><spring:message code="Dept.PROJECTS" /></label>
+					      <select name="projects" multiple="multiple" class="form-control" disabled="disabled">
+					     
+							 <c:forEach var="project" items = "${viewDept.projects}">
+					           <option value="${project.id}">${project.name}</option>
+					 		</c:forEach>
+					     </select>
+					</div>
+					
+					<div class="form-group">
+						<label for="description"><spring:message code="Dept.EMPS" /></label>
+					      <select name="projects" multiple="multiple" class="form-control" disabled="disabled">
+					     
+							 <c:forEach var="emp" items = "${viewDept.employees}">
+					           <option value="${emp.id}">${emp.fullName}</option>
+					 		</c:forEach>
+					     </select>
+					</div>
+					
 										
 					<br />
 					<br />
@@ -39,7 +58,7 @@
 
 
 					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" value="Save" /> <input
+					<input
 							type="submit" class="btn btn-primary" value="Cancel"
 							onclick="changeAction('manageDept')" />
 

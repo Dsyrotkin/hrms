@@ -1,40 +1,40 @@
  
-	var contextRoot = "/" + window.location.pathname.split( '/' )[1];
+var contextRoot = "/" + window.location.pathname.split( '/' )[1];
 
 function deleteSubmit(deptId){
    	var dataToSend = JSON.stringify({id:deptId});
+   	var url = contextRoot+'/deleteDep/'+deptId
 
    	 $.ajax({
-		type: 'GET',
-		url: 'http://localhost:8787/hrms/deleteDep/'+deptId,
+		type: 'POST',
+		url: contextRoot+'/deleteDep/'+deptId,
 		dataType: "json",           // Accept header
  		//data:dataToSend,
  		//contentType: 'application/json',   // Sends - Content-type
 		success: function(dataObj){
-			alert(dataObj)
+			alert(dataObj.succces)
+			$('#result').html("");
 			$('#errors').html("");
  			$("#result").append( '<H3 align="center"> The Recored Has Been Deleted Successfully <H3>');                
 	 	    $('#result').show();
+	 	    
+	 	    $('#'+deptId).remove();
 		},
  
 		error: function(errorObject ){	
-			alert(errorObject.responseJSON);
-		/*	
-			if (errorObject.responseJSON.errorType == "ValidationError") {
+//			alert(errorObject.responseJSON);
+			
+			if (errorObject.responseJSON.succces == "false") {
 	 			$('#success').html("");
 	 			$('#errors').html("");
 	 			$("#errors").append( '<H3 align="center"> Error(s)!! <H3>');                
 	  			    $("#result").append( '<p>');
 	  	
-	  			    var errorList = errorObject.responseJSON.errors;
-	 	 	        $.each(errorList,  function(i,error) {			   
-	 		    		$("#errors").append( error.message + '<br>');
-			    	});
-	 	 	        $("#errors").append( '</p>');
+	 	 	        $("#errors").append( errorObject.responseJSON.message +'</p>');
 	 	 	        $('#result').show();
 			}else {
 				alert(errorObject.responseJSON.errors(0));   // "non" Validation Error
-			}*/
+			}
  		}
 	});
 }
