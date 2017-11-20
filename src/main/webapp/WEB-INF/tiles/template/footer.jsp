@@ -1,1 +1,1 @@
-<p>&copy; Company 2014</p>
+<p>&copy; Octagon HRMS 2017</p>
