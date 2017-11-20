@@ -8,4 +8,5 @@ import com.hrms.domain.User;
 public interface RoleService {
 	public List<User> getUsersByRoleName(String rolename);
 	public List<Role> getAll();
+	public Role save(Role role);
 }
