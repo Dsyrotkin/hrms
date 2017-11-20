@@ -7,14 +7,26 @@
 	<div class="col-xs-3 col-md-3"></div>
 	<div class="col-xs-6 col-md-6">
 		<div class="panel panel-default">
-			<div class="panel-heading"><spring:message code="Dept.Manage" /></div>
+			<div class="panel-heading">
+				<spring:message code="Dept.Manage" />
+			</div>
 			<div class="panel-body">
+				<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+				<script type="text/javascript" src="<spring:url value="/resource/js/deptajax.js"/>"></script>
+					
+					
+				<!-- Success - or Validation errors -->
+				<div id="result" style="display: none">
+					<p id="success"></p>
+					<p id="errors"></p>
+				</div>
 
-				<form:form modelAttribute="dept" method="post"  id="deptForm">
+				<form:form modelAttribute="dept" method="post" id="deptForm">
 
 					<div class="form-group">
 						<label for="username"><spring:message code="Dept.NAME" /></label>
-						<form:input cssClass="form-control" id="deptName" name="deptName" path="name" />
+						<form:input cssClass="form-control" id="deptName" name="deptName"
+							path="name" />
 					</div>
 
 					<br />
@@ -43,12 +55,11 @@
 										<td>${deptBean.id}</td>
 										<td>${deptBean.name}</td>
 										<td>${deptBean.description}</td>
-										<td>
-										  <a href=<spring:url value="/updateDept?id=${deptBean.id}"></spring:url>><spring:message code="Gen.UPDATE" /></a>
-										</td>
-										<td>
-										  <a href=<spring:url value="/deleteDept?id=${deptBean.id}"></spring:url>><spring:message code="Gen.DELETE" /></a>
-										</td>
+										<td><a
+											href=<spring:url value="/updateDept?id=${deptBean.id}"></spring:url>><spring:message
+													code="Gen.UPDATE" /></a></td>
+										<td><a onclick="deleteSubmit(${deptBean.id})"><spring:message
+													code="Gen.DELETE" /></a></td>
 
 									</tr>
 								</c:forEach>
@@ -59,18 +70,18 @@
 
 
 					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" value="Search" onClick="changeAction('searchDept')" /> 
-						<input	type="submit" class="btn btn-primary" value="Add New" onClick="changeAction('addNewDept')"/>
-				
+						<input type="submit" class="btn btn-primary" value="Search"
+							onClick="changeAction('searchDept')" /> <input type="submit"
+							class="btn btn-primary" value="Add New"
+							onClick="changeAction('addNewDept')" />
+
 
 					</div>
 
 					<script type="text/javascript">
-					
 						function changeAction(actionName) {
 							document.getElementById("deptForm").action = actionName;
 						}
-				
 					</script>
 
 				</form:form>
