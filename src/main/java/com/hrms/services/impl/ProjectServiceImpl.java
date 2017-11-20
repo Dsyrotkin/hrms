@@ -41,6 +41,13 @@ public class ProjectServiceImpl implements ProjectService{
 		// TODO Auto-generated method stub
 		projectRepository.delete(id);		
 	}
+
+	@Override
+	public List<Project> getByName(String name) {
+		// TODO Auto-generated method stub
+		return projectRepository.getByNameContainingIgnoreCase(name);
+		
+	}
 	
 	
 
