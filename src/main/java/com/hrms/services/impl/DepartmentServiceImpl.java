@@ -35,13 +35,27 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public Department SaveDepartment(Department department) {
-		// TODO Auto-generated method stub
 		return departmentRepository.save(department);
 	}
 
 	@Override
 	public Department updateDepartment(Department department) {
 		return departmentRepository.save(department);
+	}
+
+	@Override
+	public List<Department> getDepartmentsByName(String name) {
+		return departmentRepository.getDepartmentsLikeName(name);
+	}
+
+	@Override
+	public Department getByIdAndName(long id, String name) {
+		return departmentRepository.getByIdNotAndName(id, name);
+	}
+
+	@Override
+	public Department getByName(String name) {
+		return departmentRepository.getByName(name);
 	}
 
 }
