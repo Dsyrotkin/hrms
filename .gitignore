@@ -12,3 +12,5 @@ target/classes/log4j.properties
 /target/
 .classpath
 .springBeans
+
+bin/src/main/webapp/WEB-INF/jsp/project/projectList.jsp

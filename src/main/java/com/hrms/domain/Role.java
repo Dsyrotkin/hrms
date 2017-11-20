@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="ROLE")
 public class Role implements Serializable {
@@ -20,6 +22,7 @@ public class Role implements Serializable {
 	@Column(name = "ID")
 	private long id;
 	
+	@NotEmpty
 	@Column(name = "NAME")
 	private String name;
 	

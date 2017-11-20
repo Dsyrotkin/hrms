@@ -33,7 +33,9 @@
 					aria-expanded="false">Employee <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">List Employees</a></li>
-						<li><a href="#">Add Employee</a></li>
+						<li>
+							<a href="<spring:url value="/employee/new" />">
+							Add Employee</a></li>
 						
 						<!-- <li role="separator" class="divider"></li> -->						
 					</ul>
@@ -49,7 +51,16 @@
 						<!-- <li role="separator" class="divider"></li> -->						
 					</ul>
 				</li>
-
+				<security:authorize access="hasRole('ROLE_ADMIN')">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">Admin <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="${context}admin/role"><spring:message code="addRole.page.title" /></a></li>						
+						<!-- <li role="separator" class="divider"></li> -->						
+					</ul>
+				</li>
+				</security:authorize>
 			</ul>
 			<spring:url value="?language=ar" var="url_ar"></spring:url>
 			<spring:url value="?language=en" var="url_en"></spring:url>
@@ -82,9 +93,6 @@
 				</ul>
 				</li>
 			</ul>
-
-
-
-
 		</div>
+	</div>
 </nav>

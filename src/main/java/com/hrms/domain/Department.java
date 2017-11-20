@@ -13,8 +13,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import com.hrms.validator.DeptNameIsExist;
+
 @Entity
 @Table(name="DEPARTMENT")
+@DeptNameIsExist
 public class Department implements Serializable {
 	
 	private static final long serialVersionUID = 8884341285809650039L;
@@ -24,9 +29,11 @@ public class Department implements Serializable {
 	@Column(name = "ID")
 	private long id;
 	
+	@NotBlank
 	@Column(name = "NAME")
 	private String name;
 	
+	@NotBlank
 	@Column(name = "DESCRIPTION")
 	private String description;
 	

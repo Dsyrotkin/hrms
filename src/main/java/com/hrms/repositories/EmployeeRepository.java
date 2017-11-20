@@ -8,4 +8,7 @@ import com.hrms.domain.Employee;
 @Repository
 public interface EmployeeRepository extends CrudRepository<Employee, Long>{
 
+	
+	public Employee findByFullName(String fullName);
+	
 }
