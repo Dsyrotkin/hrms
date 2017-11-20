@@ -48,17 +48,42 @@
 
 	</definition>
 
-	<definition name="department" extends="baseLayout">
-		<put-attribute name="title" value="Login" />
-		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp"></put-attribute>
+	<definition name="manageDepartment" extends="baseLayout">
+		<put-attribute name="title" value="Manage Department" />
+		<put-attribute name="body" value="/WEB-INF/jsp/dept/manageDepartment.jsp"></put-attribute>
 
 	</definition>
+	
+	
+	<definition name="searchDept" extends="baseLayout">
+		<put-attribute name="title" value="Manage Department" />
+		<put-attribute name="body" value="/WEB-INF/jsp/dept/manageDepartment.jsp"></put-attribute>
 
-	<definition name="role" extends="baseLayout">
-		<put-attribute name="title" value="Roles" />
-		<put-attribute name="body" value="/WEB-INF/jsp/role/role.jsp"></put-attribute>
+	</definition>		
+	
+	<definition name="manageDepartment" extends="baseLayout">
+		<put-attribute name="title" value="Manage Department" />
+		<put-attribute name="body" value="/WEB-INF/jsp/dept/manageDepartment.jsp"></put-attribute>
+
+	</definition>	
+
+	<definition name="addDepartment" extends="baseLayout">
+		<put-attribute name="title" value="Add Department" />
+		<put-attribute name="body" value="/WEB-INF/jsp/dept/addDepartment.jsp"></put-attribute>
 
 	</definition>
+	
+	<definition name="updateDepartment" extends="baseLayout">
+		<put-attribute name="title" value="Update Department" />
+		<put-attribute name="body" value="/WEB-INF/jsp/dept/updateDepartment.jsp"></put-attribute>
+
+	</definition>	
+	
+	<definition name="viewDepartment" extends="baseLayout">
+		<put-attribute name="title" value="View Department" />
+		<put-attribute name="body" value="/WEB-INF/jsp/dept/viewDepartment.jsp"></put-attribute>
+
+	</definition>	
 
 	<definition name="addRoleForm" extends="baseLayout">
 		<put-attribute name="title" value="Roles" />

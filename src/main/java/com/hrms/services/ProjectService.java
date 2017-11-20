@@ -12,4 +12,5 @@ public interface ProjectService {
 	public Project save(Project p);
 	public Project getById(Long id);
 	public void remove(Long id);
+	public List<Project> getByName(String name);
 }
