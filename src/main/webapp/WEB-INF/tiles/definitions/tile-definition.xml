@@ -3,7 +3,7 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-
+	
 	<definition name="baseLayout"
 		template="/WEB-INF/tiles/template/layoutTemplate.jsp">
 		<put-attribute name="title" value="" />
@@ -68,11 +68,6 @@
 	<!-- <definition name="productNotFound" extends="baseLayout"> <put-attribute 
 		name="title" value="Product Exception" /> <put-attribute name="body" value="/WEB-INF/views/productNotFound.jsp" 
 		/> </definition> -->
-  
-	<definition name="productNotFound" extends="baseLayout">
-		<put-attribute name="title" value="Product Exception" />
- 		<put-attribute name="body" value="/WEB-INF/views/productNotFound.jsp" />
-	</definition> -->
 	
 	<definition name="employeeForm" extends="baseLayout">
 		<put-attribute name="title" value="Employee Registration"/>
@@ -88,5 +83,5 @@
 		<put-attribute name="title" value="Employee Contact Information"/>
 		<put-attribute name="body" value="/WEB-INF/flows/addEmployee/employeeInfo.jsp"></put-attribute>
 	</definition>
-
+	 	
 </tiles-definitions>
