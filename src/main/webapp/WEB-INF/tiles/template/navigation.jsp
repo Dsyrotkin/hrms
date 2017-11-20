@@ -33,7 +33,9 @@
 					aria-expanded="false">Employee <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">List Employees</a></li>
-						<li><a href="#">Add Employee</a></li>
+						<li>
+							<a href="<spring:url value="/employee/new" />">
+							Add Employee</a></li>
 						
 						<!-- <li role="separator" class="divider"></li> -->						
 					</ul>
