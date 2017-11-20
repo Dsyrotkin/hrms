@@ -39,23 +39,20 @@ public class User implements Serializable {
 	
 	@Column(name = "ENABLED")
 	private boolean enabled;
-	
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
 
 	@OneToOne(mappedBy = "user")
 	@JoinColumn(name = "EMPLOYEE")
 	private Employee employee;
 	
-
 	@ManyToMany
 	@Fetch(FetchMode.JOIN)
 	private List<Role> roles = new ArrayList<>();
+	
+	public User() { }
+	
+	public User(String username) {
+		this.username = username;
+	}
 	
 	public long getId() {
 		return id;
@@ -99,6 +96,14 @@ public class User implements Serializable {
 	
 	public void addRole(Role role) {
 		roles.add(role);
+	}
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.hrms.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,16 +13,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="EMPLOYEE")
@@ -34,18 +37,27 @@ public class Employee implements Serializable {
 	@Column(name = "ID")
 	private long id;
 	
+	//@NotEmpty
+	//@Size(min = 2, max = 40)
 	@Column(name = "FULL_NAME")
 	private String fullName;
 	
+	//@NotEmpty
+	//@Size(min = 2, max = 20)
 	@Column(name = "EMPLOYEE_ID")
 	private String employeeId;
 	
+	//@Past
+	@DateTimeFormat(pattern="MM-dd-yyyy")
 	@Column(name = "DATE_OF_BIRTH")
 	private Date dateOfBirth;
 	
+	//@NotEmpty
+	//@Email
 	@Column(name = "EMAIL")
 	private String email;
 	
+	//@NotEmpty
 	@Column(name = "PHONE")
 	private String phone;
 	
@@ -54,11 +66,11 @@ public class Employee implements Serializable {
     private byte[] photo;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "USER_ID", nullable = false)
+	@JoinColumn(name = "USER_ID")
 	private User user;
 	
-	@OneToOne
-	@JoinColumn(name = "ADDRESS", nullable = false)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ADDRESS")
 	private Address address;
 	
 	@OneToMany(cascade = CascadeType.ALL)
@@ -72,6 +84,10 @@ public class Employee implements Serializable {
 	
 	@ManyToOne
 	private Department department;
+	
+	public Employee() {
+		this.address = new Address();
+	}
 	
 	public long getId() {
 		return id;
