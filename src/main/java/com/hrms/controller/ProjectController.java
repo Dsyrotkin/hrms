@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hrms.domain.Department;
 import com.hrms.domain.Project;
+import com.hrms.services.DepartmentService;
 import com.hrms.services.ProjectService;
 import com.hrms.util.AutoCompleteObject;
 
@@ -32,6 +34,9 @@ public class ProjectController {
 	@Autowired
 	ProjectService projectService;
 	
+	@Autowired
+	DepartmentService departmentService;
+	
 	@RequestMapping(value="list", method=RequestMethod.GET)
 	public String list(Model model) {
 		List<Project> projects = projectService.getAll();
@@ -40,7 +45,9 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="new", method=RequestMethod.GET)
-	public String project(@ModelAttribute("project") Project project) {
+	public String project(@ModelAttribute("project") Project project, Model model) {
+		List<Department> departments = departmentService.getAllDepartments();
+		model.addAttribute("departments", departments);
 		return "projectForm";
 	}
 	
@@ -49,6 +56,8 @@ public class ProjectController {
 		
 		Project project = projectService.getById(Long.parseLong(id));
 		model.addAttribute("project", project);
+		List<Department> departments = departmentService.getAllDepartments();
+		model.addAttribute("departments", departments);
 		return "projectForm";
 	}
 	

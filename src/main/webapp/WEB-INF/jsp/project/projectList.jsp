@@ -25,7 +25,7 @@
 									<input type="text" name="projectname" id="search" placeholder="Search" class="form-control ui-autocomplete-input"/>
 									<input  hidden="true" type="text" name="projectid" id="projectid"/>
 									<span class="input-group-btn" id="basic-addon2">
-										<button type="submit" class="btn btn-default">
+										<button type="submit" class="btn btn-warning">
 											<span class="glyphicon glyphicon-search"></span>
 										</button>
 									</span>						
