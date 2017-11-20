@@ -65,9 +65,6 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/role/addRoleForm.jsp"></put-attribute>
 
 	</definition>
-	<!-- <definition name="productNotFound" extends="baseLayout"> <put-attribute 
-		name="title" value="Product Exception" /> <put-attribute name="body" value="/WEB-INF/views/productNotFound.jsp" 
-		/> </definition> -->
 	
 	<definition name="employeeForm" extends="baseLayout">
 		<put-attribute name="title" value="Employee Registration"/>
@@ -81,7 +78,12 @@
 	
 	<definition name="employeeInfo" extends="baseLayout">
 		<put-attribute name="title" value="Employee Contact Information"/>
-		<put-attribute name="body" value="/WEB-INF/flows/addEmployee/employeeInfo.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/employee/employeeInfo.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="employeeList" extends="baseLayout">
+		<put-attribute name="title" value="Employee Contact Information"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/employee/employeeList.jsp"></put-attribute>
 	</definition>
 	 	
 </tiles-definitions>

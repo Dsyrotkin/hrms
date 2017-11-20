@@ -26,8 +26,7 @@
 					</div> -->
 					<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
 					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" value="Submit" name="_eventId_submit" />
-						<button id="btnContacts" class="btn btn-primary" name="_eventId_contacts">Add Contacts Info</button>
+						<button id="btnContacts" class="btn btn-primary" name="_eventId_contacts">Next</button>
 						<button id="btnCancel" class="btn btn-primary" name="_eventId_cancel">Cancel</button>
 					</div>
 				</form:form>
