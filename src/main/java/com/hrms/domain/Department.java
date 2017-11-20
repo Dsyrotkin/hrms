@@ -3,10 +3,12 @@ package com.hrms.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,11 +39,11 @@ public class Department implements Serializable {
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Employee> employees = new ArrayList<>();
+	@OneToMany(fetch=FetchType.EAGER)
+	private Set<Employee> employees ;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Project> projects = new ArrayList<>();
+	@OneToMany(fetch=FetchType.EAGER)
+	private Set<Project> projects ;
 	
 	public Department() {}
 	
@@ -74,7 +76,7 @@ public class Department implements Serializable {
 		this.description = description;
 	}
 	
-	public List<Employee> getEmployees() {
+	public Set<Employee> getEmployees() {
 		return employees;
 	}
 	
@@ -82,7 +84,7 @@ public class Department implements Serializable {
 		employees.add(employee);
 	}
 	
-	public List<Project> getProjects() {
+	public Set<Project> getProjects() {
 		return projects;
 	}
 	

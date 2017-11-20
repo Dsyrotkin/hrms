@@ -73,10 +73,39 @@ public class RoleController {
 	public @ResponseBody ResponseEntity<User> addRoleToUser(@RequestBody Role role,@PathVariable("username") String username ,Model model) {
 		User user = userService.getUserByUsername(username);
 		if(user != null) {
+			if(user.getRoles().stream().anyMatch(r -> role.getName().equals(r.getName())))
+			{
+				return new ResponseEntity<>(user,HttpStatus.CONFLICT);
+			}
+			
 			user.getRoles().add(role);
 			return new ResponseEntity<>(userService.save(user),HttpStatus.OK);
 		}
+		
 		return new ResponseEntity<>(user,HttpStatus.BAD_REQUEST);
+	}
+	
+	
+	@RequestMapping(value = "/admin/role/delete/{username}", method = RequestMethod.POST, produces = "application/json", consumes="application/json")
+	public @ResponseBody ResponseEntity<User> deleteUserRole(@RequestBody Role role,@PathVariable("username") String username ,Model model) {
+		User user = userService.getUserByUsername(username);
+		if(user != null) {
+			user.getRoles().removeIf((r) -> role.getName().equals(r.getName()));
+			return new ResponseEntity<>( userService.save(user) ,HttpStatus.OK);
+		}
+		return new ResponseEntity<>(user,HttpStatus.BAD_REQUEST);
+	}
+	
+	@RequestMapping(value = "/admin/role/deleteRole", method = RequestMethod.POST, produces = "application/json", consumes="application/json")
+	public @ResponseBody ResponseEntity<Role> deleteRole(@RequestBody Role role, Model model) {
+		Role dbRes = roleService.getByName(role.getName());
+		if(dbRes != null)
+		{
+			roleService.delete(dbRes.getId());
+			return new ResponseEntity<>( role ,HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>( role ,HttpStatus.BAD_REQUEST);
 	}
 	
 	

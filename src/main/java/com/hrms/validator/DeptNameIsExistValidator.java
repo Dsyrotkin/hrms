@@ -4,11 +4,12 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.hrms.domain.Department;
 import com.hrms.services.DepartmentService;
 
-
+@Component
 public class DeptNameIsExistValidator implements ConstraintValidator<DeptNameIsExist, Department> {
 
 	@Autowired

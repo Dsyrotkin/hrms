@@ -32,7 +32,7 @@
 
 					<div class="form-group text-right">
 						<input type="submit" class="btn btn-primary" value="Save" /> 
-						<input type="submit" class="btn btn-primary" value="Cancel" onclick="changeAction('manageDept')" /> 
+						<input type="submit" class="btn btn-danger" value="Cancel" onclick="changeAction('manageDept')" /> 
 						
 
 					</div>
