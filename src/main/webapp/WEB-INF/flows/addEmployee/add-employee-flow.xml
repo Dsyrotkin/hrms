@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+							http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+<on-start>
+    <evaluate expression="new com.hrms.domain.Employee()" result="flowScope.employee" />
+</on-start>
+
+<view-state id="employeeForm" model="employee">
+	<transition on="submit" to="saveEmployee"/>
+    <transition on="contacts" to="employeeContactsForm"/>
+    <transition on="cancel" to="cancelRegistration"/>
+</view-state>
+
+<view-state id="employeeContactsForm" model="employee">
+    <transition on="return" to="employeeForm"/>
+</view-state>
+ 
+<action-state id="saveEmployee">
+	<evaluate expression="addEmployeeControllerHelper.saveEmployee(employee)" result="employee"/>
+	<transition to="employeeInfo" />
+</action-state>
+
+<view-state id="employeeInfo" model="employee">
+	<transition on="home" to="cancelRegistration"/>
+</view-state>
+
+<end-state id="cancelRegistration" view="externalRedirect:contextRelative:/"/>
+
+</flow>

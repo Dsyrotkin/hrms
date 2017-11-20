@@ -55,5 +55,20 @@
 		<put-attribute name="title" value="Product Exception" />
  		<put-attribute name="body" value="/WEB-INF/views/productNotFound.jsp" />
 	</definition> -->
+	
+	<definition name="employeeForm" extends="baseLayout">
+		<put-attribute name="title" value="Employee Registration"/>
+		<put-attribute name="body" value="/WEB-INF/flows/addEmployee/employeeForm.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="employeeContactsForm" extends="baseLayout">
+		<put-attribute name="title" value="Employee Contact Information"/>
+		<put-attribute name="body" value="/WEB-INF/flows/addEmployee/employeeContactsForm.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="employeeInfo" extends="baseLayout">
+		<put-attribute name="title" value="Employee Contact Information"/>
+		<put-attribute name="body" value="/WEB-INF/flows/addEmployee/employeeInfo.jsp"></put-attribute>
+	</definition>
 	 	
 </tiles-definitions>

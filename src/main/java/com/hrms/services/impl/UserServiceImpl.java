@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hrms.domain.Employee;
 import com.hrms.domain.User;
 import com.hrms.repositories.UserRepository;
 import com.hrms.services.UserService;
@@ -26,8 +27,13 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userRepository.save(user);
 	}
-	
-	
-	
+
+	@Override
+	public User createUser(String username) {
+		User user = new User(username);
+		user.setPassword("test");
+		user.setEnabled(true);
+		return user;
+	}
 
 }
