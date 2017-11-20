@@ -32,7 +32,7 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Employee <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">List Employees</a></li>
+						<li><a href="<spring:url value="/employee/list" />">List Employees</a></li>
 						<li>
 							<a href="<spring:url value="/employee/new" />">
 							Add Employee</a></li>
