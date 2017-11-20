@@ -3,54 +3,72 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	
-	<definition name="baseLayout" template="/WEB-INF/tiles/template/layoutTemplate.jsp">
+
+	<definition name="baseLayout"
+		template="/WEB-INF/tiles/template/layoutTemplate.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="heading" value="" />
 		<put-attribute name="tagline" value="" />
- 		<put-attribute name="navigation" value="/WEB-INF/tiles/template/navigation.jsp"/>
+		<put-attribute name="navigation"
+			value="/WEB-INF/tiles/template/navigation.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
 	</definition>
-	
- 	<definition name="welcome" extends="baseLayout">
+
+	<definition name="welcome" extends="baseLayout">
 		<put-attribute name="title" value="Welcome" />
 		<put-attribute name="heading" value="Welcome" />
- 		<put-attribute name="body" value="/WEB-INF/jsp/welcome.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/welcome.jsp" />
 	</definition>
-	
-	<definition name="login" extends="baseLayout">
-		<put-attribute name="title" value="Login"/>
-		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp"></put-attribute>
-		
-	</definition>
-	
-	<definition name="projectList" extends="baseLayout">
-		<put-attribute name="title" value="Projects"/>
-		<put-attribute name="body" value="/WEB-INF/jsp/project/projectList.jsp"></put-attribute>
-		
-	</definition>
-	
-	<definition name="projectForm" extends="baseLayout">
-		<put-attribute name="title" value="New Project"/>
-		<put-attribute name="body" value="/WEB-INF/jsp/project/projectForm.jsp"></put-attribute>
-		
-	</definition>
-	
-	<definition name="projectSaved" extends="baseLayout">
-		<put-attribute name="title" value="Project Details"/>
-		<put-attribute name="body" value="/WEB-INF/jsp/project/projectSaved.jsp"></put-attribute>
-		
-	</definition>
-	
-	<definition name="department" extends="baseLayout">
-		<put-attribute name="title" value="Login"/>
-		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp"></put-attribute>
-		
-	</definition>
-	<!-- 
 
-	 	
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp"></put-attribute>
+
+	</definition>
+
+	<definition name="projectList" extends="baseLayout">
+		<put-attribute name="title" value="Projects" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/project/projectList.jsp"></put-attribute>
+
+	</definition>
+
+	<definition name="projectForm" extends="baseLayout">
+		<put-attribute name="title" value="New Project" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/project/projectForm.jsp"></put-attribute>
+
+	</definition>
+
+	<definition name="projectSaved" extends="baseLayout">
+		<put-attribute name="title" value="Project Details" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/project/projectSaved.jsp"></put-attribute>
+
+	</definition>
+
+	<definition name="department" extends="baseLayout">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp"></put-attribute>
+
+	</definition>
+
+	<definition name="role" extends="baseLayout">
+		<put-attribute name="title" value="Roles" />
+		<put-attribute name="body" value="/WEB-INF/jsp/role/role.jsp"></put-attribute>
+
+	</definition>
+
+	<definition name="addRoleForm" extends="baseLayout">
+		<put-attribute name="title" value="Roles" />
+		<put-attribute name="body" value="/WEB-INF/jsp/role/addRoleForm.jsp"></put-attribute>
+
+	</definition>
+	<!-- <definition name="productNotFound" extends="baseLayout"> <put-attribute 
+		name="title" value="Product Exception" /> <put-attribute name="body" value="/WEB-INF/views/productNotFound.jsp" 
+		/> </definition> -->
+  
 	<definition name="productNotFound" extends="baseLayout">
 		<put-attribute name="title" value="Product Exception" />
  		<put-attribute name="body" value="/WEB-INF/views/productNotFound.jsp" />
@@ -70,5 +88,5 @@
 		<put-attribute name="title" value="Employee Contact Information"/>
 		<put-attribute name="body" value="/WEB-INF/flows/addEmployee/employeeInfo.jsp"></put-attribute>
 	</definition>
-	 	
+
 </tiles-definitions>

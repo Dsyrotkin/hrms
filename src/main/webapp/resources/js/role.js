@@ -1,0 +1,57 @@
+
+	function addRole(role_id,role_name){
+		var roleData = {"id" : role_id, "name" : role_name};
+		var username = $('#input_' + role_name).val();
+		$('#alert_' + role_name).hide();
+		$('#success_' + role_name).hide();
+		$.ajax({
+			url: '/hrms/admin/role/add/' + username,
+			type: 'POST',
+			data: JSON.stringify(roleData),
+			contentType: 'application/json',
+			dataType: "json",
+			success: function(response){
+				$('#success_' + role_name).show();
+				$('#list_' + role_name).append('<a href="#" class="list-group-item">'+ response.username +'</a>');
+			},
+			error: function(){						
+				$('#alert_' + role_name).show();
+			}
+		});
+	}
+	
+$(document).ready(function() {
+	
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+		  var target = $(e.target).attr("href"); // activated tab
+		  getUsersByRoleName(target.split("tab_").pop());
+		});
+
+
+	// Get product object from Server...
+	function getUsersByRoleName(rolename) {
+		$.ajax({
+			url: '/hrms/admin/role/' + rolename,
+			type: 'GET',
+			async:false,
+			dataType: "json",
+			contentType: "application/json",
+			success: function (response) {
+				displayUsers(response,rolename);
+			},
+			error: function(){} 
+		});
+	}
+	   
+	function displayUsers(users,rolename) {
+		$('#list_' + rolename).html("");
+		$('#alert_' + rolename).hide();
+		$('#success_' + rolename).hide();
+		for(var i = 0 ; i < users.length; i++)
+			{
+			$('#list_' + rolename).append('<a href="#" class="list-group-item">'+ users[i].username +'</a>');
+			}
+		
+//		$('#list_' + rolename).attr("style", "display: block")
+	} 
+});
