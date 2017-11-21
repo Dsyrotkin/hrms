@@ -1,9 +1,8 @@
 package com.hrms.controller;
 
-import java.sql.SQLException;
-
 import javax.validation.Valid;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.hrms.domain.Department;
 import com.hrms.exc.exception.OperationResult;
-import com.hrms.exc.exception.ValidationErrorDTO;
 import com.hrms.services.DepartmentService;
 
 @Controller
@@ -30,8 +28,8 @@ public class DepartmentController {
 	@Autowired
 	DepartmentService departmentService;
 	
-//	@Autowired
-//	private MessageSourceAccessor messageSourceAccessor;
+	@Autowired
+	private MessageSourceAccessor messageSourceAccessor;
 
 	@GetMapping("/manageDept")
 	public String manageDepartment(Model model) {
@@ -112,13 +110,13 @@ public class DepartmentController {
 	}
 	
 
-	@ExceptionHandler(SQLException.class)
-//	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(ConstraintViolationException.class)
+	@ResponseStatus(org.springframework.http.HttpStatus.BAD_REQUEST)
 	@ResponseBody
-	public OperationResult processValidationError(SQLException ex) {
+	public OperationResult processValidationError(ConstraintViolationException ex) {
 		OperationResult operationResult = new OperationResult();
 		operationResult.setSuccces(false);
-		operationResult.setMessage(ex.getMessage());
+		operationResult.setMessage(messageSourceAccessor.getMessage("GEN.MSG.FORIGN_KEY_VIOLATION"));
         
 		return operationResult;
 	}

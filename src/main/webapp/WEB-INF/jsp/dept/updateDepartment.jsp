@@ -8,27 +8,27 @@
 	<div class="col-xs-6 col-md-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<spring:message code="Dept.Manage" />
+				<spring:message code="Dept.UPDATE" />
 			</div>
 			<div class="panel-body">
-
+  
 				<form:form modelAttribute="updateDept" method="post"
 					action="saveUpdateDept" id="deptForm">
-					<form:errors path="*" />
+					<form:errors path="*" cssClass="text-danger"/>
 					<input type="hidden" name="id" id="id" value="${updateDept.id}" />
 
 					<div class="form-group">
 						<label for="name"><spring:message code="Dept.NAME" /></label>
 						<form:input cssClass="form-control" id="deptName" name="name"
 							path="name" />
-						<form:errors path="name" />
+						<form:errors path="name" cssClass="text-danger"/>
 					</div>
 
 					<div class="form-group">
 						<label for="description"><spring:message code="Dept.DESC" /></label>
 						<form:input cssClass="form-control" id="description"
 							name="description" path="description" />
-						<form:errors path="description" />
+						<form:errors path="description" cssClass="text-danger"/>
 					</div>
 					
 
@@ -40,7 +40,7 @@
 
 					<div class="form-group text-right">
 						<input type="submit" class="btn btn-primary" value="Save" /> <input
-							type="submit" class="btn btn-primary" value="Cancel"
+							type="submit" class="btn btn-danger" value="Cancel"
 							onclick="changeAction('manageDept')" />
 
 

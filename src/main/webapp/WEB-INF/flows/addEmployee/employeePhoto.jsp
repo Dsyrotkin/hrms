@@ -4,24 +4,24 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
 <c:url var="context" value="/"/>
+<spring:url var="JS" value="/resources/js"/>
+<script type="text/javascript" src="${JS}/image-upload.js"></script>
 <div class="row">
 	<div class="col-xs-3 col-md-3"></div>
 	<div class="col-xs-6 col-md-6">
 		<div class="panel panel-default">
-			<div class="panel-heading"><spring:message code="addRole.form.title" /></div>
+			<div class="panel-heading">Employee Registration</div>
 			<div class="panel-body">
-				<c:url var="addUrl" value="/admin/role/addRole" />
-				<form:form modelAttribute="role" method="post" action="${addUrl}">
-				<form:errors cssStyle="color: red;" path="*"/>
-					<div class="form-group">
-						<label for="name"><spring:message code="addRole.form.name" /></label> 
-						<form:input class="form-control" id="name" path="name" />
-					<%-- 	<form:errors style ="color: red;" path="name"></form:errors> --%>
+				<c:url var="EmployeeUrl" value="/employee" />
+				<form:form modelAttribute="fileUploadHandler" enctype="multipart/form-data">
+					Select photo: <input type="file" name="file" id="photo" />
+					<div style="width: 200px; height: 300px;">
+						<img id="chosenImage" src="#" alt="" style="max-width: 200px; max-height: 300px;"/>
 					</div>
 					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" value="Submit" />
+						<input type="submit" class="btn btn-primary" name="_eventId_contacts" value="Next" />
+						<button id="btnCancel" class="btn btn-danger" name="_eventId_back">Return</button>
 					</div>
 				</form:form>
 			</div>

@@ -1,8 +1,6 @@
 package com.hrms.validator;
 
 import static java.lang.annotation.ElementType.TYPE;
-
-import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
@@ -10,12 +8,12 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE })
+@Target({TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = RoleNameIsExistValidator.class)
-public @interface RoleNameIsExist {
+@Constraint(validatedBy = UserRoleValidator.class)
+public @interface IsUserRoleExist {
 
-	String message() default "Role.form.name.exist";
+	String message() default "Role.UserRole.exist";
 
 	Class<?>[] groups() default {};
 

@@ -8,7 +8,7 @@
 	<div class="col-xs-6 col-md-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				
+				<spring:message code="Dept.VIEW" />
 			</div>
 			<div class="panel-body">
 
@@ -59,7 +59,7 @@
 
 					<div class="form-group text-right">
 					<input
-							type="submit" class="btn btn-primary" value="Cancel"
+							type="submit" class="btn btn-danger" value="Cancel"
 							onclick="changeAction('manageDept')" />
 
 

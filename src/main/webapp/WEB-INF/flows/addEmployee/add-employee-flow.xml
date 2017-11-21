@@ -6,16 +6,24 @@
 
 <on-start>
     <evaluate expression="new com.hrms.domain.Employee()" result="flowScope.employee" />
+    <evaluate expression="new com.hrms.webflow.FileUploadHandler()" result="flowScope.fileUploadHandler" />
 </on-start>
 
 <view-state id="employeeForm" model="employee">
-    <transition on="contacts" to="employeeContactsForm"/>
+    <transition on="photo" to="employeePhoto"/>
     <transition on="cancel" to="cancelRegistration"/>
+</view-state>
+
+<view-state id="employeePhoto" model="fileUploadHandler">
+    <transition on="contacts" to="employeeContactsForm">
+    	<evaluate expression="fileUploadHandler.getImage()" result="employee.photo"></evaluate>
+    </transition>
+    <transition on="back" to="employeeForm"/>
 </view-state>
 
 <view-state id="employeeContactsForm" model="employee">
     <transition on="save" to="saveEmployee"/>
-    <transition on="cancel" to="cancelRegistration"/>
+    <transition on="back" to="employeePhoto"/>
 </view-state>
  
 <action-state id="saveEmployee">

@@ -14,12 +14,14 @@
 				<form:form modelAttribute="employee" method="post">
 					<p>Full Name: ${employee.fullName} </p>
 					<p>Employee ID: ${employee.employeeId} </p>
+					<p>Date of birth: ${employee.dateOfBirth} </p>
 					<p>Phone: ${employee.phone} </p>
 					<p>Email: ${employee.email} </p>
 					<br>
 					<p>State: ${employee.address.state} </p>
 					<p>Street: ${employee.address.street} </p>
 					<p>ZIP: ${employee.address.zip} </p>
+					<p>Photo: <img src="getPhoto/<c:out value="${employee.photo.id}"/>" alt="photo" style="max-width: 200px; max-height: 300px;"/></p>
 					<button id="btnHome" class="btn btn-primary" name="_eventId_home">Main page</button>
 				</form:form>
 			</div>

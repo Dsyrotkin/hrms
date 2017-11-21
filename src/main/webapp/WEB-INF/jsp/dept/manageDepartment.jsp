@@ -11,10 +11,16 @@
 				<spring:message code="Dept.Manage" />
 			</div>
 			<div class="panel-body">
-				<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-				<script type="text/javascript" src="<spring:url value="/resource/js/deptajax.js"/>"></script>
-					
-					
+
+				<script type="text/javascript"
+					src="<spring:url value="/resource/js/deptajax.js"/>"></script>
+
+				<script type="text/javascript"
+					src="https://code.jquery.com/jquery-1.12.4.js"></script>
+				<script type="text/javascript"
+					src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 				<!-- Success - or Validation errors -->
 				<div id="result" style="display: none">
 					<p id="success"></p>
@@ -39,6 +45,8 @@
 								<th><spring:message code="Dept.ID" /></th>
 								<th><spring:message code="Dept.NAME" /></th>
 								<th><spring:message code="Dept.DESC" /></th>
+								<th># <spring:message code="Dept.PROJECTS" /></th>
+								<th># <spring:message code="Dept.EMPS" /></th>
 								<th colspan="2"><spring:message code="Gen.ACTIONS" /></th>
 							</tr>
 						</thead>
@@ -55,16 +63,18 @@
 										<td>${deptBean.id}</td>
 										<td>${deptBean.name}</td>
 										<td>${deptBean.description}</td>
+										<td>${deptBean.projects.size()}</td>
+										<td>${deptBean.employees.size()}</td>
 										<td>
-										<a
-											href=<spring:url value="/viewDept?id=${deptBean.id}"></spring:url>><spring:message
-													code="Gen.VIEW" /></a>
-										<a
-											href=<spring:url value="/updateDept?id=${deptBean.id}"></spring:url>><spring:message
-													code="Gen.UPDATE" /></a></td>
-										<td><a onclick="deleteSubmit(${deptBean.id})"><spring:message
-													code="Gen.DELETE" /></a></td>
-
+						
+										
+									<ul class="nav navbar-nav">	
+										<li><a href=<spring:url value="/viewDept?id=${deptBean.id}"/> title=<spring:message code="Gen.VIEW" /> ><span class="glyphicon glyphicon-eye-open"></span></a></li>
+										<li><a href=<spring:url value="/updateDept?id=${deptBean.id}"/> title=<spring:message code="Gen.UPDATE" /> > <span class="glyphicon glyphicon-pencil"></span></a></li>
+										<li><a onclick="confirmDelete(${deptBean.id})" title=<spring:message code="Gen.DELETE" /> > <span class="glyphicon glyphicon-remove"></span></a></li>
+										</ul>
+										</td>
+									
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -82,11 +92,15 @@
 
 					</div>
 
-					<script type="text/javascript">
-						function changeAction(actionName) {
-							document.getElementById("deptForm").action = actionName;
-						}
-					</script>
+
+					<div id="dialog-confirm" title="Do you want to department ">
+						<p>
+							<span class="ui-icon ui-icon-alert"
+								style="float: left; margin: 12px 12px 20px 0;"></span>These item
+							will be permanently deleted and cannot be recovered. Are you
+							sure ?
+						</p>
+					</div>
 
 				</form:form>
 			</div>

@@ -39,10 +39,10 @@ public class Department implements Serializable {
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.REFRESH,fetch=FetchType.EAGER)
 	private Set<Employee> employees ;
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.REFRESH,fetch=FetchType.EAGER)
 	private Set<Project> projects ;
 	
 	public Department() {}

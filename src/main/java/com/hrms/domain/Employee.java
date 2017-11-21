@@ -61,9 +61,9 @@ public class Employee implements Serializable {
 	@Column(name = "PHONE")
 	private String phone;
 	
-	@Lob
-    @Column(name = "PHOTO", columnDefinition = "mediumblob")
-    private byte[] photo;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "PHOTO")
+    private Image photo;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "USER_ID")
@@ -129,11 +129,11 @@ public class Employee implements Serializable {
 		this.phone = phone;
 	}
 	
-	public byte[] getPhoto() {
+	public Image getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(byte[] photo) {
+	public void setPhoto(Image photo) {
 		this.photo = photo;
 	}
 
