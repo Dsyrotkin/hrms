@@ -43,6 +43,7 @@
 							<td>Action</td>
 							<td>Name</td>
 							<td>Description</td>
+							<td>Code</td>
 							<td>Start Date</td>
 							<td>End Date</td>
 							<td>Department</td>
@@ -59,12 +60,13 @@
 								</td>
 								<td>${project.name}</td>
 								<td>${project.description}</td>
+								<td>${project.code}</td>
 								<td><fmt:formatDate type = "date" value = "${project.startDate}" /></td>
 								<td><fmt:formatDate type = "date" value = "${project.endDate}" /></td>
 								
 								<td>
 									<c:if test="${not empty project.department.name}">
-										<a href="department/${project.department.id}">${project.department.name}</a>
+										<a href="${context}viewDept?id=${project.department.id}">${project.department.name}</a>
 									</c:if>
 								</td>
 							</tr>
