@@ -26,6 +26,8 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.hrms.validator.EmployeeFullName;
+
 @Entity
 @Table(name="EMPLOYEE")
 public class Employee implements Serializable {
@@ -37,27 +39,28 @@ public class Employee implements Serializable {
 	@Column(name = "ID")
 	private long id;
 	
-	//@NotEmpty
-	//@Size(min = 2, max = 40)
+	@EmployeeFullName
+	@NotEmpty
+	@Size(min = 2, max = 40)
 	@Column(name = "FULL_NAME")
 	private String fullName;
 	
-	//@NotEmpty
-	//@Size(min = 2, max = 20)
+	@NotEmpty
+	@Size(min = 2, max = 20)
 	@Column(name = "EMPLOYEE_ID")
 	private String employeeId;
 	
-	//@Past
+	@Past
 	@DateTimeFormat(pattern="MM-dd-yyyy")
 	@Column(name = "DATE_OF_BIRTH")
 	private Date dateOfBirth;
 	
-	//@NotEmpty
-	//@Email
+	@NotEmpty
+	@Email
 	@Column(name = "EMAIL")
 	private String email;
 	
-	//@NotEmpty
+	@NotEmpty
 	@Column(name = "PHONE")
 	private String phone;
 	

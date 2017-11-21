@@ -15,18 +15,30 @@
 					<div class="form-group">
 						<label for="fullName">Full Name</label>
 						<form:input class="form-control" id="fullName" path="fullName" />
+						<form:errors path="fullName" class="text-danger"></form:errors>
 					</div>
 					<div class="form-group">
 						<label for="userId">Employee ID</label>
 						<form:input class="form-control" id="employeeId" path="employeeId" />
+						<form:errors path="employeeId" class="text-danger"></form:errors>
 					</div>
 					<div class="form-group">
-						<label for="dateOfBirth">Date Of Birth</label>					
-						<form:input class="form-control" id="dateOfBirth" path="dateOfBirth" />					
+						<label for="dateOfBirth">Date Of Birth</label>
+						<fmt:formatDate pattern="MM-dd-yyyy" value="${project.endDate}" var="dob" />			
+						<form:input class="form-control" id="dateOfBirth" path="dateOfBirth" value="${dob}"/>	
+						<form:errors path="dateOfBirth" class="text-danger"></form:errors>				
+					</div>
+					<div class="form-group">
+						<label for="phone">Phone</label>
+						<form:input class="form-control" id="phone" path="phone" />
+					</div>
+					<div class="form-group">
+						<label for="email">Email</label>
+						<form:input class="form-control" id="email" path="email" />
 					</div>
 					<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
 					<div class="form-group text-right">
-						<input type="submit" id="btnContacts" class="btn btn-primary" name="_eventId_photo" value="Next">
+						<button id="btnNext" class="btn btn-primary" name="_eventId_photo">Next</button>
 						<button id="btnCancel" class="btn btn-danger" name="_eventId_cancel">Cancel</button>
 					</div>
 				</form:form>
