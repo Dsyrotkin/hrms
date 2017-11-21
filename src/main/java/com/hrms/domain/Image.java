@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.persistence.Transient;
  
 @Entity
 @Table(name = "FILES_UPLOAD")
@@ -23,8 +24,7 @@ public class Image implements Serializable{
 	@Column(name = "FILE_NAME")
     private String fileName;
 	
-	@Lob
-	@Column(name = "FILE_DATA")
+	@Transient
     private byte[] data;
  
     public long getId() {
