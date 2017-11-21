@@ -13,18 +13,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.hrms.validator.DeptNameIsExist;
+import com.hrms.validator.ProjectNameIsExist;
+
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="PROJECT")
+@ProjectNameIsExist
 public class Project implements Serializable {
 	
 	private static final long serialVersionUID = 290121368112074618L;
@@ -42,6 +46,12 @@ public class Project implements Serializable {
 	@Column(name = "DESCRIPTION")
 	@NotEmpty
 	private String description;
+	
+	@Column(name = "CODE")
+	@NotEmpty
+	@Digits(integer=10, fraction=0)
+	//@projectCodeFormat
+	private String code;
 	
 	@Column(name = "START_DATE")
 	@DateTimeFormat(pattern="mm-dd-yy")
@@ -105,6 +115,14 @@ public class Project implements Serializable {
 
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 	
 }

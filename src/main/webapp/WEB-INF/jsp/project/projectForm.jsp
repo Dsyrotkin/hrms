@@ -25,6 +25,13 @@
 						<form:input class="form-control" id="description" path="description" />
 						<form:errors path="description" class="text-danger"></form:errors>
 					</div>
+					
+					<div class="form-group">
+						<label for="code">Code</label> 
+						<form:input class="form-control" id="code" path="code" />
+						<form:errors path="code" class="text-danger"></form:errors>
+					</div>
+					
 					<div class="form-group">
 						<label for="startDate">Start Date</label>
 						<fmt:formatDate pattern="MM-dd-yyyy" value="${project.startDate}" var="sdate"/>						
