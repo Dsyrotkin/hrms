@@ -33,8 +33,10 @@
 						<form:input class="form-control" id="email" path="email" />
 					</div>
 					<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
-					<input type="submit" class="btn btn-primary" value="Submit" name="_eventId_save" />
-					<button id="btnCancel" class="btn btn-primary" name="_eventId_back">Return</button>
+					<div class="form-group text-right">
+						<input type="submit" class="btn btn-primary" value="Submit" name="_eventId_save" />
+						<button id="btnCancel" class="btn btn-danger" name="_eventId_back">Return</button>
+					</div>
 				</form:form>
 			</div>
 		</div>
