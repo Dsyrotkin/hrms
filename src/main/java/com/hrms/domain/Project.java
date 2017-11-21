@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Digits;
@@ -63,9 +64,10 @@ public class Project implements Serializable {
 	
 	@ManyToOne
 	@NotNull
+	//@JoinTable(name="department_project")
 	private Department department;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	//@JsonIgnore
 	private List<Employee> employees = new ArrayList<>();
 	

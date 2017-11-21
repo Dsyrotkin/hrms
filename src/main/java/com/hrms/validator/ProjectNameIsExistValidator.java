@@ -31,11 +31,10 @@ public class ProjectNameIsExistValidator implements ConstraintValidator<ProjectN
 		}
 		
 		List<Project> projects = null;
-
+		System.out.print(project.getName());
 		projects = projectService.getByName(project.getName());
-		
 
-		return projects == null ? true : false;
+		return projects.size() == 0 ? true : false;
 	}
 
 }
