@@ -5,12 +5,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <div class="row">
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<div class="col-xs-1 col-md-1"></div>
 	<div class="col-xs-10 col-md-10">
 =======
 	<div class="col-xs-2 col-md-2"></div>
 	<div class="col-xs-8 col-md-8">
 >>>>>>> master
+=======
+
+>>>>>>> eeb702b73f93cfb245ce1adef14fbf9a1a3681f6
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<spring:message code="Dept.Manage" />
@@ -112,8 +116,11 @@
 		</div>
 	</div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<div class="col-xs-1  col-md-1"></div>
 =======
 	<div class="col-xs-2  col-md-2"></div>
 >>>>>>> master
+=======
+>>>>>>> eeb702b73f93cfb245ce1adef14fbf9a1a3681f6
 </div>
