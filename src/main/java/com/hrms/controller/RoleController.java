@@ -21,7 +21,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hrms.domain.Role;
 import com.hrms.domain.User;
-import com.hrms.domain.response.Test;
+import com.hrms.domain.rest.AddUserRole;
+import com.hrms.domain.rest.Test;
 import com.hrms.services.RoleService;
 import com.hrms.services.UserService;
 import com.hrms.util.GeneralHelper;
@@ -69,14 +70,15 @@ public class RoleController {
 		return  users;
 	}
 	
-	@RequestMapping(value = "/admin/role/add/{username}", method = RequestMethod.POST, produces = "application/json", consumes="application/json")
-	public @ResponseBody ResponseEntity<User> addRoleToUser(@RequestBody Role role,@PathVariable("username") String username ,Model model) {
-		User user = userService.getUserByUsername(username);
+	@RequestMapping(value = "/admin/role/addUserRole", method = RequestMethod.POST, produces = "application/json", consumes="application/json")
+	public @ResponseBody ResponseEntity<User> addRoleToUser(@Valid @RequestBody AddUserRole userRole,Model model) {
+		User user = userService.getUserByUsername(userRole.getUsername());
 		if(user != null) {
-			if(user.getRoles().stream().anyMatch(r -> role.getName().equals(r.getName())))
+			if(user.getRoles().stream().anyMatch(r -> userRole.getRoleName().equals(r.getName())))
 			{
 				return new ResponseEntity<>(user,HttpStatus.CONFLICT);
 			}
+			Role role = roleService.getByName(userRole.getRoleName());
 			
 			user.getRoles().add(role);
 			return new ResponseEntity<>(userService.save(user),HttpStatus.OK);
