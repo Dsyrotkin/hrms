@@ -48,6 +48,7 @@ public class RoleServiceTest {
 	@Test
 	public void getUsersByRoleName() {
 
+		
 	}
 
 	@Test
@@ -75,7 +76,15 @@ public class RoleServiceTest {
 
 	@Test
 	public void getByName() {
-
+		String name = "ROLE_ADMIN";
+		when(roleRepositoryMock.findByName(name)).thenReturn(roleList.get(0));
+		Role object1 = builder.getRoleBuilder1().build();
+		Role role = roleService.getByName(name);
+		assertThat(role,
+                allOf(
+                     hasProperty("id", is(object1.getId())),
+                		hasProperty("name", is(object1.getName()))
+                ));
 	}
 
 	@Test
