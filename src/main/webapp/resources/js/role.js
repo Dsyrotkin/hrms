@@ -6,7 +6,7 @@
 		$('#alert_' + role_name).hide();
 		$('#success_' + role_name).hide();
 		$.ajax({
-			url: '/hrms/admin/role/addUserRole',
+			url: '/hrms/admin/role/addUserRole?' + $("#csrf").attr("name") + '=' + $("#csrf").val(),
 			type: 'POST',
 			data: JSON.stringify(userRoleData),
 			contentType: 'application/json',
@@ -51,7 +51,7 @@
 		$('#alert_' + role_name).hide();
 		$('#success_' + role_name).hide();
 		$.ajax({
-			url: '/hrms/admin/role/delete/' + username,
+			url: '/hrms/admin/role/delete/' + username  + '?' + $("#csrf").attr("name") + '=' + $("#csrf").val(),
 			type: 'POST',
 			data: JSON.stringify(roleData),
 			contentType: 'application/json',
@@ -96,7 +96,7 @@
 		$('#alert_' + role_name).hide();
 		$('#success_' + role_name).hide();
 		$.ajax({
-			url: '/hrms/admin/role/deleteRole',
+			url: '/hrms/admin/role/deleteRole?' + $("#csrf").attr("name") + '=' + $("#csrf").val(),
 			type: 'POST',
 			data: JSON.stringify(roleData),
 			contentType: 'application/json',
