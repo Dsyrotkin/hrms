@@ -2,6 +2,8 @@ package com.hrms.services.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return departmentRepository.findOne(id);
 	}
 
+	@Transactional
 	@Override
 	public void deleteDepartment(Long id) {
 

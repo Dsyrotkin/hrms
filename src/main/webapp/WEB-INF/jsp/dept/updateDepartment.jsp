@@ -8,7 +8,7 @@
 	<div class="col-xs-6 col-md-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<spring:message code="Dept.Manage" />
+				<spring:message code="Dept.UPDATE" />
 			</div>
 			<div class="panel-body">
   

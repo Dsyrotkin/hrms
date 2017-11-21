@@ -22,14 +22,15 @@ function deleteSubmit(deptId){
 		},
  
 		error: function(errorObject ){	
-//			alert(errorObject.responseJSON);
+			//alert(errorObject);
+			//alert(errorObject.responseJSON.succces);
 			
-			if (errorObject.responseJSON.succces == "false") {
+			if (!errorObject.responseJSON.succces ) {
+				alert(324)
 	 			$('#success').html("");
 	 			$('#errors').html("");
-	 			$("#errors").append( '');                
-	  			    $("#result").append( '<div class="alert alert-danger"> <p>'+errorObject.responseJSON.message +'</p></div>');  
-	 	 	        $('#result').show();
+	 			$("#errors").append( '<div class="alert alert-danger"> <p> '+errorObject.responseJSON.message +'</p></div>');                
+	 	 	    $('#result').show();
 			}else {
 				alert(errorObject.responseJSON.errors(0));   // "non" Validation Error
 			}
