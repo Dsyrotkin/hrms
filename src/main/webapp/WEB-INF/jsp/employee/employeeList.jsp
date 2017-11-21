@@ -50,7 +50,7 @@
 								<td>${employee.address.zip}</td>
 								
 								<td>
-									<a href="employee/${employee.id}">View Employee</a>
+									<a href="info/${employee.id}">View Employee</a>
 								</td>
 							</tr>
 						</c:forEach>
