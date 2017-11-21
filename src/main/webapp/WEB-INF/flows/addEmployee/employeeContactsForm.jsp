@@ -11,18 +11,21 @@
 			<div class="panel-heading">Employee Contacts Form</div>
 			<div class="panel-body">
 				<c:url var="EmployeeUrl" value="/employee" />
-				<form:form modelAttribute="employee">
+				<form:form modelAttribute="address">
 					<div class="form-group">
 						<label for="state">State</label>
-						<form:input class="form-control" id="state" path="address.state" />
+						<form:input class="form-control" id="state" path="state" />
+						<form:errors path="state" class="text-danger"></form:errors>
 					</div>
 					<div class="form-group">
 						<label for="street">Street</label>
-						<form:input class="form-control" id="street" path="address.street" />
+						<form:input class="form-control" id="street" path="street" />
+						<form:errors path="street" class="text-danger"></form:errors>
 					</div>
 					<div class="form-group">
 						<label for="zip">ZIP</label>
-						<form:input class="form-control" id="zip" path="address.zip" />
+						<form:input class="form-control" id="zip" path="zip" />
+						<form:errors path="zip" class="text-danger"></form:errors>
 					</div>
 					<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
 					<div class="form-group text-right">
