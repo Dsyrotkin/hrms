@@ -1,13 +1,14 @@
 
 	function addRoleUser(role_id,role_name){
-		var roleData = {"id" : role_id, "name" : role_name};
+		
 		var username = $('#input_' + role_name).val();
+		var userRoleData = {"username" : username, "roleName" : role_name};
 		$('#alert_' + role_name).hide();
 		$('#success_' + role_name).hide();
 		$.ajax({
-			url: '/hrms/admin/role/add/' + username,
+			url: '/hrms/admin/role/addUserRole',
 			type: 'POST',
-			data: JSON.stringify(roleData),
+			data: JSON.stringify(userRoleData),
 			contentType: 'application/json',
 			dataType: "json",
 			success: function(response){
@@ -25,17 +26,21 @@
 					deleteRoleUser(username,role_name)
 				});
 			},
-			error: function(response){				
-				if(response.status == 409)
-					{
-					$('#alert_' + role_name).html("Username already exist in this role");
+			error: function(errorObject){				
+				if (errorObject.responseJSON.errorType == "ValidationError") {
+					$('#alert_' + role_name).html("");
+
+					var errorList = errorObject.responseJSON.errors;
+					$('#alert_' + role_name).append('<p>');
+					$.each(errorList, function(i, error) {
+						$('#alert_' + role_name).append(error.message + '<br>');
+					});
+					$('#alert_' + role_name).append('</p>');
 					$('#alert_' + role_name).show();
-					}
-				else
-					{
-					$('#alert_' + role_name).html("Username doesn't exist in database");
-					$('#alert_' + role_name).show();
-					}
+				} else {
+					alert(errorObject.responseJSON.errors(0)); // "non" Validation
+					// Error
+				}
 			
 			}
 		});
