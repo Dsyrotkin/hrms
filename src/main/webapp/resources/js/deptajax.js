@@ -12,7 +12,7 @@ function deleteSubmit(deptId){
  		//data:dataToSend,
  		//contentType: 'application/json',   // Sends - Content-type
 		success: function(dataObj){
-			alert(dataObj.succces)
+			//alert(dataObj.succces)
 			$('#result').html("");
 			$('#errors').html("");
  			$("#result").append( '<div class="alert alert-success"> <p>The Recored Has Been Deleted Successfully</p></div>');                
@@ -35,6 +35,34 @@ function deleteSubmit(deptId){
 			}
  		}
 	});
+}
+
+
+function changeAction(actionName) {
+	document.getElementById("deptForm").action = actionName;
+}
+
+function confirmDelete(deptId){
+	//alert( $( "#dialog-confirm" ))
+	
+	  $( function() {
+		    $( "#dialog-confirm" ).dialog({
+		      resizable: false,
+		      height: "auto",
+		      width: 400,
+		      modal: true,
+		      buttons: {
+		        "Delete": function() {
+		          $( this ).dialog( "close" );
+		          deleteSubmit(deptId);
+		        },
+		        Cancel: function() {
+		          $( this ).dialog( "close" );
+		        }
+		      }
+		    });
+		  } );
+	
 }
 
  
