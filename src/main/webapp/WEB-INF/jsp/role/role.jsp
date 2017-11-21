@@ -64,7 +64,12 @@
 <div class="col-xs-3  col-md-3"></div>
 </div>
 
-<div id="dialog-confirm" title="Do you want to role from user ?">
+<div style="display:none;" id="user-dialog-confirm" title="Do you want to delete role from user ?">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These item will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
+ 
+ 
+ <div style="display:none;" id="role-dialog-confirm" title="Do you want to delete role ?">
   <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These item will be permanently deleted and cannot be recovered. Are you sure?</p>
 </div>
  

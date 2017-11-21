@@ -71,7 +71,7 @@
 	function deleteRoleUser(username,role_name){
 		
 		  $( function() {
-			    $( "#dialog-confirm" ).dialog({
+			    $( "#user-dialog-confirm" ).dialog({
 			      resizable: false,
 			      height: "auto",
 			      width: 400,
@@ -115,7 +115,7 @@
 	
 	function deleteRole(role_name){
 		  $( function() {
-			    $( "#dialog-confirm" ).dialog({
+			    $( "#role-dialog-confirm" ).dialog({
 			      resizable: false,
 			      height: "auto",
 			      width: 400,
