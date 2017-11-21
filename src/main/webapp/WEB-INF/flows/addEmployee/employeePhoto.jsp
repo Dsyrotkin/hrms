@@ -3,7 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:url var="context" value="/"/>
+<spring:url var="JS" value="/resources/js"/>
+<script type="text/javascript" src="${JS}/image-upload.js"></script>
 <div class="row">
 	<div class="col-xs-3 col-md-3"></div>
 	<div class="col-xs-6 col-md-6">
@@ -16,28 +19,13 @@
 					<div style="width: 200px; height: 300px;">
 						<img id="chosenImage" src="#" alt="" style="max-width: 200px; max-height: 300px;"/>
 					</div>
-					<input type="submit" class="btn btn-primary" name="_eventId_contacts" value="Next" />
-					<button id="btnCancel" class="btn btn-primary" name="_eventId_back">Return</button>
+					<div class="form-group text-right">
+						<input type="submit" class="btn btn-primary" name="_eventId_contacts" value="Next" />
+						<button id="btnCancel" class="btn btn-danger" name="_eventId_back">Return</button>
+					</div>
 				</form:form>
 			</div>
 		</div>
 	</div>
 	<div class="col-xs-3  col-md-3"></div>
 </div>
-<script type="text/javascript">
-$("#photo").change(function(){
-    readURL(this);
-});
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        
-        reader.onload = function (e) {
-            $('#chosenImage').attr('src', e.target.result);
-        }
-        
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-</script>
