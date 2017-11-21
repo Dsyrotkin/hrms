@@ -24,14 +24,6 @@
 						<label for="zip">ZIP</label>
 						<form:input class="form-control" id="zip" path="address.zip" />
 					</div>
-					<div class="form-group">
-						<label for="phone">Phone</label>
-						<form:input class="form-control" id="phone" path="phone" />
-					</div>
-					<div class="form-group">
-						<label for="email">Email</label>
-						<form:input class="form-control" id="email" path="email" />
-					</div>
 					<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
 					<div class="form-group text-right">
 						<input type="submit" class="btn btn-primary" value="Submit" name="_eventId_save" />
