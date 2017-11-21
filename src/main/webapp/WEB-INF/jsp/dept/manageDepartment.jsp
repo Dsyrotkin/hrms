@@ -4,8 +4,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <div class="row">
-	<div class="col-xs-3 col-md-3"></div>
-	<div class="col-xs-6 col-md-6">
+	<div class="col-xs-1 col-md-1"></div>
+	<div class="col-xs-10 col-md-10">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<spring:message code="Dept.Manage" />
@@ -84,9 +84,9 @@
 
 
 					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" value="Search"
+						<input type="submit" class="btn btn-primary" value="<spring:message code="Gen.SEARCH" />"
 							onClick="changeAction('searchDept')" /> <input type="submit"
-							class="btn btn-success" value="Add New"
+							class="btn btn-success" value="<spring:message code="Gen.ADD" />"
 							onClick="changeAction('addNewDept')" />
 
 
@@ -106,5 +106,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-3  col-md-3"></div>
+	<div class="col-xs-1  col-md-1"></div>
 </div>
