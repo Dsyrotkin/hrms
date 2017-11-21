@@ -14,11 +14,11 @@
 			<div class="panel-body">
 				<c:url var="addUrl" value="/admin/role/addRole" />
 				<form:form modelAttribute="role" method="post" action="${addUrl}">
-				<form:errors path="*"/>
+				<form:errors cssStyle="color: red;" path="*"/>
 					<div class="form-group">
 						<label for="name"><spring:message code="addRole.form.name" /></label> 
 						<form:input class="form-control" id="name" path="name" />
-						<form:errors path="name"></form:errors>
+					<%-- 	<form:errors style ="color: red;" path="name"></form:errors> --%>
 					</div>
 					<div class="form-group text-right">
 						<input type="submit" class="btn btn-primary" value="Submit" />
