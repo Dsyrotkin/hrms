@@ -24,7 +24,6 @@
     </mvc:message-converters>
 </mvc:annotation-driven>
 	<mvc:resources  location="/resources/"  mapping="/resource/**"/>
-		<bean id="messageSource"
 
 	
 	<bean
