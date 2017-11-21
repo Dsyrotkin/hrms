@@ -3,7 +3,7 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	
+
 	<definition name="baseLayout"
 		template="/WEB-INF/tiles/template/layoutTemplate.jsp">
 		<put-attribute name="title" value="" />
@@ -50,70 +50,82 @@
 
 	<definition name="manageDepartment" extends="baseLayout">
 		<put-attribute name="title" value="Manage Department" />
-		<put-attribute name="body" value="/WEB-INF/jsp/dept/manageDepartment.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/dept/manageDepartment.jsp"></put-attribute>
 
 	</definition>
-	
-	
+
+
 	<definition name="searchDept" extends="baseLayout">
 		<put-attribute name="title" value="Manage Department" />
-		<put-attribute name="body" value="/WEB-INF/jsp/dept/manageDepartment.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/dept/manageDepartment.jsp"></put-attribute>
 
-	</definition>		
-	
+	</definition>
+
 	<definition name="manageDepartment" extends="baseLayout">
 		<put-attribute name="title" value="Manage Department" />
-		<put-attribute name="body" value="/WEB-INF/jsp/dept/manageDepartment.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/dept/manageDepartment.jsp"></put-attribute>
 
-	</definition>	
+	</definition>
 
 	<definition name="addDepartment" extends="baseLayout">
 		<put-attribute name="title" value="Add Department" />
-		<put-attribute name="body" value="/WEB-INF/jsp/dept/addDepartment.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/dept/addDepartment.jsp"></put-attribute>
 
 	</definition>
-	
+
 	<definition name="updateDepartment" extends="baseLayout">
 		<put-attribute name="title" value="Update Department" />
-		<put-attribute name="body" value="/WEB-INF/jsp/dept/updateDepartment.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/dept/updateDepartment.jsp"></put-attribute>
 
-	</definition>	
-	
+	</definition>
+
 	<definition name="viewDepartment" extends="baseLayout">
 		<put-attribute name="title" value="View Department" />
-		<put-attribute name="body" value="/WEB-INF/jsp/dept/viewDepartment.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/dept/viewDepartment.jsp"></put-attribute>
 
-	</definition>	
+	</definition>
 
+	<definition name="role" extends="baseLayout">
+		<put-attribute name="title" value="Roles" />
+		<put-attribute name="body" value="/WEB-INF/jsp/role/role.jsp"></put-attribute>
+	</definition>
+	
 	<definition name="addRoleForm" extends="baseLayout">
 		<put-attribute name="title" value="Roles" />
 		<put-attribute name="body" value="/WEB-INF/jsp/role/addRoleForm.jsp"></put-attribute>
+	</definition>
 
-	</definition>
-	
 	<definition name="employeeForm" extends="baseLayout">
-		<put-attribute name="title" value="Employee Registration"/>
-		<put-attribute name="body" value="/WEB-INF/flows/addEmployee/employeeForm.jsp"></put-attribute>
+		<put-attribute name="title" value="Employee Registration" />
+		<put-attribute name="body"
+			value="/WEB-INF/flows/addEmployee/employeeForm.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="employeePhoto" extends="baseLayout">
 		<put-attribute name="title" value="Employee Photo"/>
 		<put-attribute name="body" value="/WEB-INF/flows/addEmployee/employeePhoto.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="employeeContactsForm" extends="baseLayout">
-		<put-attribute name="title" value="Employee Contact Information"/>
-		<put-attribute name="body" value="/WEB-INF/flows/addEmployee/employeeContactsForm.jsp"></put-attribute>
+		<put-attribute name="title" value="Employee Contact Information" />
+		<put-attribute name="body"
+			value="/WEB-INF/flows/addEmployee/employeeContactsForm.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="employeeInfo" extends="baseLayout">
 		<put-attribute name="title" value="Employee Information"/>
 		<put-attribute name="body" value="/WEB-INF/jsp/employee/employeeInfo.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="employeeList" extends="baseLayout">
 		<put-attribute name="title" value="Employees"/>
 		<put-attribute name="body" value="/WEB-INF/jsp/employee/employeeList.jsp"></put-attribute>
 	</definition>
-	 	
+
 </tiles-definitions>
