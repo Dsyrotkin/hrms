@@ -34,7 +34,7 @@
 					</div>
 					<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
 					<input type="submit" class="btn btn-primary" value="Submit" name="_eventId_save" />
-					<button id="btnCancel" class="btn btn-primary" name="_eventId_cancel">Cancel</button>
+					<button id="btnCancel" class="btn btn-primary" name="_eventId_back">Return</button>
 				</form:form>
 			</div>
 		</div>

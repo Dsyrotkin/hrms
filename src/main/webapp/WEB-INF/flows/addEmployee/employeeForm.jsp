@@ -20,13 +20,13 @@
 						<label for="userId">Employee ID</label>
 						<form:input class="form-control" id="employeeId" path="employeeId" />
 					</div>
-					<!-- <div class="form-group">
+					<div class="form-group">
 						<label for="dateOfBirth">Date Of Birth</label>					
 						<form:input class="form-control" id="dateOfBirth" path="dateOfBirth" />					
-					</div> -->
+					</div>
 					<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
 					<div class="form-group text-right">
-						<button id="btnContacts" class="btn btn-primary" name="_eventId_contacts">Next</button>
+						<input type="submit" id="btnContacts" class="btn btn-primary" name="_eventId_photo" value="Next">
 						<button id="btnCancel" class="btn btn-primary" name="_eventId_cancel">Cancel</button>
 					</div>
 				</form:form>
