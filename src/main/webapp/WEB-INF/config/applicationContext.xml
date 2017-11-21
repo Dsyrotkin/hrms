@@ -60,5 +60,15 @@
 
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+		
+	<!-- custom formatter -->
+	
+	<bean id="projectCodeFormat" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="formatters">
+			<set>
+				<bean class="com.hrms.formatter.ProjectCodeFormatter"> </bean>
+			</set>
+		</property>
+	</bean>
 
 </beans>

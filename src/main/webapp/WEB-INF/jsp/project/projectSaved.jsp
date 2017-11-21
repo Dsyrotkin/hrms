@@ -15,6 +15,8 @@
 				  <dd>${project.name}</dd>
 				  <dt>Description</dt>
 				  <dd>${project.description}</dd>
+				  <dt>Code</dt>
+				  <dd>${project.code}</dd>
 				  <dt>Start Date</dt>
 				  <dd><fmt:formatDate pattern="MM-dd-yyyy" value="${project.startDate}" /></dd>
 				  <dt>End Date</dt>

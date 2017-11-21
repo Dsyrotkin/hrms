@@ -7,7 +7,7 @@
 	<div class="col-xs-3 col-md-3"></div>
 	<div class="col-xs-6 col-md-6">
 		<div class="panel panel-default">
-			<div class="panel-heading"><spring:message code="Dept.Manage" /></div>
+			<div class="panel-heading"><spring:message code="Dept.ADD" /></div>
 			<div class="panel-body">
 
 				<form:form modelAttribute="newDept" method="post" action="saveNewDept"  id="deptForm">
