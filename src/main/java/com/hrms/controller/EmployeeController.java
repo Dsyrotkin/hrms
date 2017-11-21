@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,5 +27,11 @@ public class EmployeeController {
 		List<Employee> employees = employeeService.getAll();
 		model.addAttribute("employees", employees);
 		return "employeeList";
+	}
+	
+	@RequestMapping(value="info/{id}", method=RequestMethod.GET)
+	public String showEmployee(@PathVariable("id") String id, Model model) {
+		model.addAttribute("employee", employeeService.getById(Long.parseLong(id)));
+		return "employeeInfo";
 	}
 }
