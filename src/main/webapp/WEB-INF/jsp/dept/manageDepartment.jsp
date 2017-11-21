@@ -8,6 +8,8 @@
 	<div class="col-xs-1 col-md-1"></div>
 	<div class="col-xs-10 col-md-10">
 =======
+	<div class="col-xs-2 col-md-2"></div>
+	<div class="col-xs-8 col-md-8">
 >>>>>>> master
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -112,5 +114,6 @@
 <<<<<<< HEAD
 	<div class="col-xs-1  col-md-1"></div>
 =======
+	<div class="col-xs-2  col-md-2"></div>
 >>>>>>> master
 </div>
