@@ -93,7 +93,7 @@
 					</div>
 
 
-					<div id="dialog-confirm" title="Do you want to department ">
+					<div id="dialog-confirm" style = "display: none;" title="Do you want to department ">
 						<p>
 							<span class="ui-icon ui-icon-alert"
 								style="float: left; margin: 12px 12px 20px 0;"></span>These item
