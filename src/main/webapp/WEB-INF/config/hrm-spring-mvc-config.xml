@@ -98,6 +98,13 @@
 			<property name="paramName" value="language" />
 		</bean>
 	</mvc:interceptors>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.hrms.interceptor.VolunteerInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
