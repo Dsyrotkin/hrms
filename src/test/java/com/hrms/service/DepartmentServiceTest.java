@@ -54,6 +54,7 @@ public class DepartmentServiceTest {
 
 		Department object1 = builder.getDepartmentBuilder1().build();
 		Department object2 = builder.getDepartmentBuilder2().build();
+		
 		assertThat(departments,
 				hasItem(allOf(hasProperty("id", is(object1.getId())), hasProperty("name", is(object1.getName())))));
 
@@ -68,7 +69,7 @@ public class DepartmentServiceTest {
 
 		when(deptRepositoryMock.getByName(name)).thenReturn(deptList.get(0));
 		
-		Department object1 = builder.getDepartmentBuilder1().build();
+		Department object1 = builder.getDepartmentBuilder2().build();
 		Department department = deptService.getByName(name);
 		assertThat(department,
 				allOf(hasProperty("id", is(object1.getId())), hasProperty("name", is(object1.getName()))));
