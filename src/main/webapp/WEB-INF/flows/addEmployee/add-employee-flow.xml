@@ -11,7 +11,7 @@
 
 <view-state id="employeeForm" model="employee">
     <transition on="photo" to="employeePhoto"/>
-    <transition on="cancel" to="cancelRegistration"/>
+    <transition on="cancel" to="cancelRegistration" validate="false" bind="false" />
 </view-state>
 
 <view-state id="employeePhoto" model="fileUploadHandler">
