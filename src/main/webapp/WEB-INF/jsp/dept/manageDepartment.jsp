@@ -45,6 +45,8 @@
 								<th><spring:message code="Dept.ID" /></th>
 								<th><spring:message code="Dept.NAME" /></th>
 								<th><spring:message code="Dept.DESC" /></th>
+								<th># <spring:message code="Dept.PROJECTS" /></th>
+								<th># <spring:message code="Dept.EMPS" /></th>
 								<th colspan="2"><spring:message code="Gen.ACTIONS" /></th>
 							</tr>
 						</thead>
@@ -61,6 +63,8 @@
 										<td>${deptBean.id}</td>
 										<td>${deptBean.name}</td>
 										<td>${deptBean.description}</td>
+										<td>${deptBean.projects.size()}</td>
+										<td>${deptBean.employees.size()}</td>
 										<td>
 						
 										
