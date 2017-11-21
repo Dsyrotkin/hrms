@@ -12,10 +12,10 @@ function deleteSubmit(deptId){
  		//data:dataToSend,
  		//contentType: 'application/json',   // Sends - Content-type
 		success: function(dataObj){
-			alert(dataObj.succces)
+			//alert(dataObj.succces)
 			$('#result').html("");
 			$('#errors').html("");
- 			$("#result").append( '<H3 align="center"> The Recored Has Been Deleted Successfully <H3>');                
+ 			$("#result").append( '<div class="alert alert-success"> <p>The Recored Has Been Deleted Successfully</p></div>');                
 	 	    $('#result').show();
 	 	    
 	 	    $('#'+deptId).remove();
@@ -27,16 +27,42 @@ function deleteSubmit(deptId){
 			if (errorObject.responseJSON.succces == "false") {
 	 			$('#success').html("");
 	 			$('#errors').html("");
-	 			$("#errors").append( '<H3 align="center"> Error(s)!! <H3>');                
-	  			    $("#result").append( '<p>');
-	  	
-	 	 	        $("#errors").append( errorObject.responseJSON.message +'</p>');
+	 			$("#errors").append( '');                
+	  			    $("#result").append( '<div class="alert alert-danger"> <p>'+errorObject.responseJSON.message +'</p></div>');  
 	 	 	        $('#result').show();
 			}else {
 				alert(errorObject.responseJSON.errors(0));   // "non" Validation Error
 			}
  		}
 	});
+}
+
+
+function changeAction(actionName) {
+	document.getElementById("deptForm").action = actionName;
+}
+
+function confirmDelete(deptId){
+	//alert( $( "#dialog-confirm" ))
+	
+	  $( function() {
+		    $( "#dialog-confirm" ).dialog({
+		      resizable: false,
+		      height: "auto",
+		      width: 400,
+		      modal: true,
+		      buttons: {
+		        "Delete": function() {
+		          $( this ).dialog( "close" );
+		          deleteSubmit(deptId);
+		        },
+		        Cancel: function() {
+		          $( this ).dialog( "close" );
+		        }
+		      }
+		    });
+		  } );
+	
 }
 
  
