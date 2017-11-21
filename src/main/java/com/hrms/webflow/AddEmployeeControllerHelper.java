@@ -24,4 +24,5 @@ public class AddEmployeeControllerHelper {
 		employeeService.createNewUserFromEmployee(employee);
 		return employeeService.save(employee);
 	}
+
 }

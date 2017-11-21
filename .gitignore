@@ -14,3 +14,5 @@ target/classes/log4j.properties
 .springBeans
 
 bin/src/main/webapp/WEB-INF/jsp/project/projectList.jsp
+/.settings/
+/bin/

@@ -107,6 +107,11 @@
 			value="/WEB-INF/flows/addEmployee/employeeForm.jsp"></put-attribute>
 	</definition>
 
+	<definition name="employeePhoto" extends="baseLayout">
+		<put-attribute name="title" value="Employee Photo"/>
+		<put-attribute name="body" value="/WEB-INF/flows/addEmployee/employeePhoto.jsp"></put-attribute>
+	</definition>
+
 	<definition name="employeeContactsForm" extends="baseLayout">
 		<put-attribute name="title" value="Employee Contact Information" />
 		<put-attribute name="body"
@@ -114,15 +119,13 @@
 	</definition>
 
 	<definition name="employeeInfo" extends="baseLayout">
-		<put-attribute name="title" value="Employee Contact Information" />
-		<put-attribute name="body"
-			value="/WEB-INF/jsp/employee/employeeInfo.jsp"></put-attribute>
+		<put-attribute name="title" value="Employee Information"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/employee/employeeInfo.jsp"></put-attribute>
 	</definition>
 
 	<definition name="employeeList" extends="baseLayout">
-		<put-attribute name="title" value="Employee Contact Information" />
-		<put-attribute name="body"
-			value="/WEB-INF/jsp/employee/employeeList.jsp"></put-attribute>
+		<put-attribute name="title" value="Employees"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/employee/employeeList.jsp"></put-attribute>
 	</definition>
 
 </tiles-definitions>
