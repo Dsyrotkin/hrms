@@ -11,12 +11,12 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 //@Target({ ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.ANNOTATION_TYPE })
-@Target(TYPE)
+@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = RoleNameIsExistValidator.class)
 public @interface RoleNameIsExist {
 
-	String message() default "{Role.MSG.NAME_IS_EXIST}";
+	String message() default "{Role.form.name.exist}";
 
 	Class<?>[] groups() default {};
 

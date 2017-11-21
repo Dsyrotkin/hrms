@@ -16,7 +16,7 @@ import com.hrms.validator.RoleNameIsExist;
 
 @Entity
 @Table(name="ROLE")
-@RoleNameIsExist
+
 public class Role implements Serializable {
 
 	private static final long serialVersionUID = 224532666063067699L;
@@ -26,8 +26,9 @@ public class Role implements Serializable {
 	@Column(name = "ID")
 	private long id;
 	
+	@RoleNameIsExist
 	@NotEmpty
-	@Column(name = "NAME")
+	@Column(name = "NAME") 
 	private String name;
 	
 	public long getId() {
