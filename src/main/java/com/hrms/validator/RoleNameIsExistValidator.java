@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.hrms.domain.Role;
 import com.hrms.services.RoleService;
 
-public class RoleNameIsExistValidator implements ConstraintValidator<RoleNameIsExist, Role> {
+public class RoleNameIsExistValidator implements ConstraintValidator<RoleNameIsExist, String> {
 
 	@Autowired
 	private RoleService roleService;
@@ -19,12 +19,12 @@ public class RoleNameIsExistValidator implements ConstraintValidator<RoleNameIsE
 	}
 
 	@Override
-	public boolean isValid(Role role, ConstraintValidatorContext arg1) {	
+	public boolean isValid(String roleName, ConstraintValidatorContext arg1) {	
 		if(roleService == null)
 		{
 			return true;
 		}
-		Role dbRes = roleService.getByName(role.getName());
+		Role dbRes = roleService.getByName(roleName);
 		return dbRes == null ? true : false;
 	}
 

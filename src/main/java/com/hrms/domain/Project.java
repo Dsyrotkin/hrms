@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -35,6 +36,7 @@ public class Project implements Serializable {
 	
 	@Column(name = "NAME")
 	@NotNull
+	@NotBlank
 	private String name;
 	
 	@Column(name = "DESCRIPTION")
@@ -50,6 +52,7 @@ public class Project implements Serializable {
 	private Date endDate;
 	
 	@ManyToOne
+	@NotNull
 	private Department department;
 	
 	@OneToMany(cascade = CascadeType.ALL)

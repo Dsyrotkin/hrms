@@ -1,4 +1,4 @@
-package com.hrms.domain.response;
+package com.hrms.domain.rest;
 
 public class Test {
 

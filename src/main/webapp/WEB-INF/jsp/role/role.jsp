@@ -34,7 +34,7 @@
 					<c:forEach var="role" items="${roles}" varStatus="loop">
 
 						<div id="tab_${role.name}" class="tab-pane fade">
-							<h3>${role.name}</h3>
+							<h3 style="border-bottom: solid;">Users</h3>
 							<div style="padding: 5px">
 								<div class="input-group">
 									<span class="input-group-btn">
