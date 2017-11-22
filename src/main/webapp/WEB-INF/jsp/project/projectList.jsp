@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:url var="context" value="/"/>
 <div class="row">
 	<div class="col-xs-2 col-md-2"></div>
@@ -17,12 +18,12 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="row">
-					<div class="col-xs-6 col-md-6">Project List <span class="badge">${projects.size()}</span> found </div>
+					<div class="col-xs-6 col-md-6"><spring:message code="Project.project_list"/> <span class="badge">${projects.size()}</span> <spring:message code="Project.found"/> </div>
 					<div class="colxs-6 col-md-6 text-right">
 						<form id="searchform" action="${context}project/search">
 							<div class="form-group">
 								<div class="input-group">
-									<input type="text" name="projectname" id="search" placeholder="Search" class="form-control ui-autocomplete-input"/>
+									<input type="text" name="projectname" id="search" placeholder="<spring:message code="Project.search"/>" class="form-control ui-autocomplete-input"/>
 									<input  hidden="true" type="text" name="projectid" id="projectid"/>
 									<span class="input-group-btn" id="basic-addon2">
 										<button type="submit" class="btn btn-warning">
@@ -40,13 +41,13 @@
 				<table class="table table-bordered table-hover table-responsive">
 					<thead>
 						<tr>
-							<td>Action</td>
-							<td>Name</td>
-							<td>Description</td>
-							<td>Code</td>
-							<td>Start Date</td>
-							<td>End Date</td>
-							<td>Department</td>
+							<td><spring:message code="Project.action"/></td>
+							<td><spring:message code="Project.name"/></td>
+							<td><spring:message code="Project.description"/></td>
+							<td><spring:message code="Project.code"/></td>
+							<td><spring:message code="Project.startdate"/></td>
+							<td><spring:message code="Project.enddate"/></td>
+							<td><spring:message code="Project.department"/></td>
 						</tr>
 					</thead>
 					<tbody>
