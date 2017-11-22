@@ -24,32 +24,36 @@
 		</div>
 
 		<!-- if user is logged in, show below -->
+		<security:authorize access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')">
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-
-				<security:authorize access="hasRole('ROLE_ADMIN')">
-
+				<security:authorize access="hasRole('ROLE_ADMIN') ">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false"><spring:message code="Nav.Employee"/> <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="<spring:url value="/employee/list" />"><spring:message code="Nav.ListEmployee"/></a></li>
+						
 						<li>
 							<a href="<spring:url value="/employee/new" />">
-							<spring:message code="Nav.AddEmployee"/></a></li>
+							<spring:message code="Nav.AddEmployee"/></a>
+						</li>
+						
 						
 						<!-- <li role="separator" class="divider"></li> -->						
 					</ul>
 				</li>
+				</security:authorize>
 				
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false"><spring:message code="Nav.Project"/> <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="${context}project/list"><spring:message code="Nav.ListProjects"/></a></li>
+						<security:authorize access="hasRole('ROLE_ADMIN') ">
 						<li><a href="${context}project/new"><spring:message code="Nav.AddProject"/></a></li>
-						
+						</security:authorize>
 						<!-- <li role="separator" class="divider"></li> -->						
 					</ul>
 				</li>
@@ -59,18 +63,16 @@
 					aria-expanded="false"><spring:message code="Nav.Department"/> <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="${context}manageDept"><spring:message code="Nav.ListDepartments"/></a></li>
+						<security:authorize access="hasRole('ROLE_ADMIN') ">
 						<li><a href="${context}addNewDept"><spring:message code="Nav.AddDepartment"/></a></li>
-						
+						</security:authorize>
 						<!-- <li role="separator" class="divider"></li> -->						
 					</ul>
 				</li>
 
-				</security:authorize>
-			
-				<security:authorize
-					access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
 				
-
+			
+				<security:authorize	access="hasRole('ROLE_ADMIN')">
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -82,7 +84,7 @@
 				</li>
 
 				</security:authorize>
-
+	</security:authorize>
 			</ul>
 			<spring:url value="?language=ar" var="url_ar"></spring:url>
 			<spring:url value="?language=en" var="url_en"></spring:url>
@@ -118,5 +120,6 @@
 					</ul></li>
 			</ul>
 		</div>
+	
 	</div>
 </nav>
