@@ -21,7 +21,7 @@
 					<%-- 	<form:errors style ="color: red;" path="name"></form:errors> --%>
 					</div>
 					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" value="Submit" />
+						<input type="submit" class="btn btn-primary" value="<spring:message code="addRole.form.add.button" />" />
 					</div>
 				</form:form>
 			</div>

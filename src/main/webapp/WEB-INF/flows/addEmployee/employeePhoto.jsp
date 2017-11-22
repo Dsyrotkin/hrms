@@ -11,7 +11,7 @@
 	<div class="col-xs-3 col-md-3"></div>
 	<div class="col-xs-6 col-md-6">
 		<div class="panel panel-default">
-			<div class="panel-heading">Employee Registration</div>
+			<div class="panel-heading">Employee Photo</div>
 			<div class="panel-body">
 				<c:url var="EmployeeUrl" value="/employee" />
 				<form:form modelAttribute="fileUploadHandler" enctype="multipart/form-data">

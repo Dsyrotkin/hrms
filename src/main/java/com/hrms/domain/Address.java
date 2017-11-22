@@ -29,6 +29,10 @@ public class Address implements Serializable {
 	private String state;
 	
 	@NotEmpty
+	@Column(name = "CITY")
+	private String city;
+	
+	@NotEmpty
 	@Column(name = "STREET")
 	private String street;
 	
@@ -74,6 +78,14 @@ public class Address implements Serializable {
 	
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 }

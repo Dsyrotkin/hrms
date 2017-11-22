@@ -8,21 +8,35 @@
 	<div class="col-xs-3 col-md-3"></div>
 	<div class="col-xs-6 col-md-6">
 		<div class="panel panel-default">
-			<div class="panel-heading">Employee Registration</div>
+			<div class="panel-heading">Employee Information</div>
 			<div class="panel-body">
 				<c:url var="EmployeeUrl" value="/employee" />
 				<form:form modelAttribute="employee" method="post">
-					<p>Full Name: ${employee.fullName} </p>
-					<p>Employee ID: ${employee.employeeId} </p>
-					<p>Date of birth: ${employee.dateOfBirth} </p>
-					<p>Phone: ${employee.phone} </p>
-					<p>Email: ${employee.email} </p>
+					<fieldset>
+						<legend>General information</legend>
+						<div class="pull-right" style="margin-right: 20px;">
+							<a href="getPhoto/${employee.photo.id}">
+								<img src="getPhoto/${employee.photo.id}" alt="photo" style="max-width: 100px; max-height: 100px;"/>
+							</a>
+						</div>
+						<div><p><label>Full Name:</label> ${employee.fullName}</p>
+						<p><label>Employee ID:</label> ${employee.employeeId}</p>
+						<p><label>Date of birth:</label> <fmt:formatDate pattern="MMM dd, yyyy" value="${employee.dateOfBirth}" /></p>
+						</div>
+					</fieldset>
+					<fieldset>
+						<legend>Contacts</legend>
+						<p><label>Phone:</label> ${employee.phone}</p>
+						<p><label>Email:</label> ${employee.email}</p>
+					</fieldset>
 					<br>
-					<p>State: ${employee.address.state} </p>
-					<p>Street: ${employee.address.street} </p>
-					<p>ZIP: ${employee.address.zip} </p>
-					<p>Photo: <img src="getPhoto/${employee.photo.id}" alt="photo" style="max-width: 200px; max-height: 300px;"/></p>
-					<button id="btnHome" class="btn btn-primary" name="_eventId_home">Main page</button>
+					<fieldset>
+						<legend>Address</legend>
+						<p><label>State:</label> ${employee.address.state}</p>
+						<p><label>City:</label> ${employee.address.city}</p>
+						<p><label>Street:</label> ${employee.address.street}</p>
+						<p><label>ZIP:</label> ${employee.address.zip}</p>
+					</fieldset>
 				</form:form>
 			</div>
 		</div>
