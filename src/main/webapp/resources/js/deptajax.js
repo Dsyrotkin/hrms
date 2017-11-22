@@ -7,7 +7,7 @@ function deleteSubmit(deptId){
 
    	 $.ajax({
 		type: 'POST',
-		url: contextRoot+'/deleteDep/'+deptId,
+		url: contextRoot+'/deleteDep/'+deptId + '?' + $("#csrf").attr("name") + '=' + $("#csrf").val(), 
 		dataType: "json",           // Accept header
  		//data:dataToSend,
  		//contentType: 'application/json',   // Sends - Content-type
@@ -25,7 +25,7 @@ function deleteSubmit(deptId){
 //			alert(errorObject.status);
 //			alert(errorObject)
 			//alert(errorObject.responseJSON.succces);
-			if(errorObject.status = 401){
+			if(errorObject.status == 401 || errorObject.status == 403){
 				$('#result').html("");
 				$('#errors').html("");
 	 			$("#result").append( '<div class="alert alert-danger"> <p> There is no permission for the user to delete </p></div>');                
