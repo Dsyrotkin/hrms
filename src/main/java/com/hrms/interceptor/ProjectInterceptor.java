@@ -1,0 +1,47 @@
+package com.hrms.interceptor;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.hrms.util.GeneralHelper;
+
+
+public class ProjectInterceptor implements HandlerInterceptor {
+	
+	@Autowired
+	private GeneralHelper helper;
+
+	@Override
+	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
+			throws Exception {
+	}
+
+	@Override
+	public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, ModelAndView arg3)
+			throws Exception {
+	}
+
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
+//        request.getRequestURL();
+		System.out.println("in ProjectInterceptor");
+		if(!request.isUserInRole("ROLE_ADMIN")) {
+			response.setStatus(401);
+			System.out.println("in ProjectInterceptor");
+			//response.sendRedirect("noPermission");
+			response.sendRedirect(request.getServletContext().getContextPath() + "/project/noPermission");
+			return false;
+		}
+		
+		
+		return true;
+		
+		
+	}
+	
+}
