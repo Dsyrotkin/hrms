@@ -28,6 +28,11 @@
 						<label for="password">Password</label> <input type="password" class="form-control"
 							id="password" name="password" />
 					</div>
+				 <div class="col-sm-offset-1">
+				            <label class="checkbox">
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
 					<div class="form-group text-right">
