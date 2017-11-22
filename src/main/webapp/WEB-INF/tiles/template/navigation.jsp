@@ -3,10 +3,11 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 
 <c:url var="image" value="/resources/img" />
-<c:url var="context" value="/"/>
+<c:url var="context" value="/" />
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -19,15 +20,16 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="${context}"><img alt="Octagon HRMS"
-				src="${image}/fulllogo-22.png"/></a>
+				src="${image}/fulllogo-22.png" /></a>
 		</div>
 
 		<!-- if user is logged in, show below -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				
+
 				<security:authorize access="hasRole('ROLE_ADMIN')">
+
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false"><spring:message code="Nav.Employee"/> <span class="caret"></span></a>
@@ -63,6 +65,12 @@
 					</ul>
 				</li>
 
+				</security:authorize>
+			
+				<security:authorize
+					access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
+				
+
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -72,7 +80,9 @@
 						<!-- <li role="separator" class="divider"></li> -->						
 					</ul>
 				</li>
+
 				</security:authorize>
+
 			</ul>
 			<spring:url value="?language=ar" var="url_ar"></spring:url>
 			<spring:url value="?language=en" var="url_en"></spring:url>
@@ -82,28 +92,30 @@
 				<security:authorize access="isAuthenticated()">
 					<li class="active"><a href="#"><spring:message code="Nav.Welcome"/> ${user}</a></li>
 				</security:authorize>
-				
+
 				<li><security:authorize access="!isAuthenticated()">
 						<a href="${context}login"><spring:message code="Nav.Login"/></a>
-					</security:authorize> <security:authorize access="isAuthenticated()">
+					</security:authorize>
+					<security:authorize access="isAuthenticated()">
 						<a href="${context}logout"><spring:message code="Nav.Logout"/></a>
 					</security:authorize>
 				</li>
 				
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
+
+					
+
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+
 					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">
-						<img alt="Language" src="${image}/earth-22.png"/>
-						<span class="caret"></span>
-					</a>
-				<ul class="dropdown-menu">
-				<li><a href="${url_ar}">عربي</a></li>
-				<li><a href="${url_en}">English</a></li>
-				<li><a href="${url_tr}">Turkish</a></li>
-				<li><a href="${url_ua}">Ukraine</a></li>
-				</ul>
-				</li>
+					aria-expanded="false"> <img alt="Language"
+						src="${image}/earth-22.png" /> <span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="${url_ar}">عربي</a></li>
+						<li><a href="${url_en}">English</a></li>
+						<li><a href="${url_tr}">Turkish</a></li>
+						<li><a href="${url_ua}">Ukraine</a></li>
+					</ul></li>
 			</ul>
 		</div>
 	</div>
