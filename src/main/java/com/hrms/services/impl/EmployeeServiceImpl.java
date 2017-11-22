@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hrms.domain.Employee;
+import com.hrms.domain.Project;
 import com.hrms.domain.User;
 import com.hrms.repositories.EmployeeRepository;
 import com.hrms.services.EmployeeService;
@@ -57,5 +58,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return employee;
 	}
 
+	@Override
+	public Employee getById(Long id) {
+		return employeeRepository.findOne(id);
+	}
 	
 }

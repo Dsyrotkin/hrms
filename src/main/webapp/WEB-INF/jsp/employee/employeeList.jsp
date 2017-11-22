@@ -5,8 +5,8 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <c:url var="context" value="/"/>
 <div class="row">
-	<div class="col-xs-1 col-md-1"></div>
-	<div class="col-xs-10 col-md-10">
+	<div class="col-xs-2 col-md-2"></div>
+	<div class="col-xs-8 col-md-8">
 		<c:if test="{not empty ${message}}">
 		<div class="alert alert-success">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -21,14 +21,12 @@
 				<table class="table table-bordered table-hover table-responsive">
 					<thead>
 						<tr>
-							<td />
+							<td>Action</td>
 							<td>Full Name</td>
 							<td>Employee ID</td>
 							<td>Phone</td>
 							<td>Email</td>
-							<td>State</td>
-							<td>Street</td>
-							<td>ZIP</td>
+							<td>Address</td>
 							<td>View Employee</td>
 						</tr>
 					</thead>
@@ -36,7 +34,7 @@
 						<c:forEach items="${employees}" var="employee">
 							<tr>
 								<td>
-									<ul class="nav navbar-nav">
+									<ul class="nav navbar-nav text-center">
 										<li><a href="${context}employee/edit/${employee.id}" title="edit"><span class="glyphicon glyphicon-pencil"></span></a></li>
 										<li><a href="${context}employee/remove/${employee.id}" title="delete"><span class="glyphicon glyphicon-remove"></span></a></li>
 									</ul>
@@ -45,12 +43,12 @@
 								<td>${employee.employeeId}</td>
 								<td>${employee.phone}</td>
 								<td>${employee.email}</td>
-								<td>${employee.address.state}</td>
-								<td>${employee.address.street}</td>
-								<td>${employee.address.zip}</td>
-								
 								<td>
-									<a href="info/${employee.id}">View Employee</a>
+									<p>${employee.address.street}</p>
+									<p>${employee.address.city}, ${employee.address.state} ${employee.address.zip}</p>
+								</td>
+								<td>
+									<a href="info/${employee.id}">View</a>
 								</td>
 							</tr>
 						</c:forEach>
@@ -64,5 +62,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-1  col-md-1"></div>
+	<div class="col-xs-2  col-md-2"></div>
 </div>

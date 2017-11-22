@@ -1,6 +1,7 @@
 package com.hrms.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,8 @@ public class UserServiceImpl implements UserService{
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+    private PasswordEncoder passwordEncoder;
 
 	@Override
 	public User getUserByUsername(String username) {
@@ -25,6 +28,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User save(User user) {
 		// TODO Auto-generated method stub
+		user.setPassword(user.getPassword());
 		return userRepository.save(user);
 	}
 

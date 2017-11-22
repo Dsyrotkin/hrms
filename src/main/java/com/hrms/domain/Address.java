@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="ADDRESS")
@@ -20,12 +23,20 @@ public class Address implements Serializable {
 	@Column(name = "ID")
 	private long id;
 	
+	@NotEmpty
+	@Size(min = 2, max = 2)
 	@Column(name = "STATE")
 	private String state;
 	
+	@NotEmpty
+	@Column(name = "CITY")
+	private String city;
+	
+	@NotEmpty
 	@Column(name = "STREET")
 	private String street;
 	
+	@NotEmpty
 	@Column(name = "ZIP")
 	private String zip;
 	
@@ -67,6 +78,14 @@ public class Address implements Serializable {
 	
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 }

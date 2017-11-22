@@ -29,17 +29,17 @@
 					<!-- 	<li class="active"><a data-toggle="tab" href="#admins">ADMINS</a></li>
 					<li><a data-toggle="tab" href="#users">USERS</a></li> -->
 				</ul>
-
+				<input id="csrf" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
 				<div class="tab-content">
 					<c:forEach var="role" items="${roles}" varStatus="loop">
 
 						<div id="tab_${role.name}" class="tab-pane fade">
-							<h3 style="border-bottom: solid;">Users</h3>
+							<h3 style="border-bottom: solid;"><spring:message code="addUserRole.page.users.title" /></h3>
 							<div style="padding: 5px">
 								<div class="input-group">
 									<span class="input-group-btn">
 										<button class="btn btn-default" type="button"
-											onclick="addRoleUser(${role.id},'${role.name}')">Add</button>
+											onclick="addRoleUser(${role.id},'${role.name}')"><spring:message code="addUserRole.page.add.button" /></button>
 									</span> <input id="input_${role.name}" type="text"
 										class="form-control" placeholder="Username">
 								</div>
@@ -51,8 +51,8 @@
 									successfully given the user.</div>
 							</div>
 							<div id="list_${role.name}" class="list-group">
-								<a href="#" class="list-group-item active"> Cras justo odio
-								</a> <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+								<!-- <a href="#" class="list-group-item active"> Cras justo odio
+								</a> <a href="#" class="list-group-item">Dapibus ac facilisis in</a> -->
 							</div>
 						</div>
 					</c:forEach>
