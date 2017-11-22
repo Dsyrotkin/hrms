@@ -62,11 +62,15 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="save", method=RequestMethod.POST)
-	public String save(@Valid @ModelAttribute("project") Project project, BindingResult br, RedirectAttributes ra) {
+	public String save(@Valid @ModelAttribute("project") Project project, BindingResult br, RedirectAttributes ra, Model model) {
 		
 		if(br.hasErrors()) {
+			List<Department> departments = departmentService.getAllDepartments();
+			model.addAttribute("departments", departments);
 			return "projectForm";
 		}
+		
+		project.setDepartment(departmentService.getDepartment(project.getDepartment().getId()));
 		Project savedProject = projectService.save(project);
 		
 		ra.addFlashAttribute("project", savedProject);

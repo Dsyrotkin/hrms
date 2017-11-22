@@ -74,7 +74,7 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="6" class="text-center info"><!-- pagination code --></td>
+							<td colspan="7" class="text-center info"><!-- pagination code --></td>
 						</tr>
 					</tfoot>
 				</table>

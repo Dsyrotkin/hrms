@@ -6,6 +6,7 @@
 
 <on-start>
     <evaluate expression="new com.hrms.domain.Employee()" result="flowScope.employee" />
+    <evaluate expression="new com.hrms.domain.Address()" result="flowScope.address" />
     <evaluate expression="new com.hrms.webflow.FileUploadHandler()" result="flowScope.fileUploadHandler" />
 </on-start>
 
@@ -16,13 +17,15 @@
 
 <view-state id="employeePhoto" model="fileUploadHandler">
     <transition on="contacts" to="employeeContactsForm">
-    	<evaluate expression="fileUploadHandler.getImage()" result="employee.photo"></evaluate>
+    	<evaluate expression="fileUploadHandler.getImage(employee.id)" result="employee.photo"></evaluate>
     </transition>
     <transition on="back" to="employeeForm"/>
 </view-state>
 
-<view-state id="employeeContactsForm" model="employee">
-    <transition on="save" to="saveEmployee"/>
+<view-state id="employeeContactsForm" model="address">
+    <transition on="save" to="saveEmployee">
+    	<evaluate expression="employee.setAddress(address)"></evaluate>
+    </transition>
     <transition on="back" to="employeePhoto"/>
 </view-state>
  
@@ -31,9 +34,7 @@
 	<transition to="employeeInfo" />
 </action-state>
 
-<view-state id="employeeInfo" model="employee">
-	<transition on="home" to="cancelRegistration"/>
-</view-state>
+<end-state id="employeeInfo" view="employeeInfo" />
 
 <end-state id="cancelRegistration" view="externalRedirect:contextRelative:/"/>
 

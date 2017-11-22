@@ -21,7 +21,7 @@
 				<table class="table table-bordered table-hover table-responsive">
 					<thead>
 						<tr>
-							<td />
+							<td>Action</td>
 							<td>Full Name</td>
 							<td>Employee ID</td>
 							<td>Phone</td>
@@ -50,7 +50,7 @@
 								<td>${employee.address.zip}</td>
 								
 								<td>
-									<a href="employee/${employee.id}">View Employee</a>
+									<a href="info/${employee.id}">View Employee</a>
 								</td>
 							</tr>
 						</c:forEach>
