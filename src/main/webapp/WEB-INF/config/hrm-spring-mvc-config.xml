@@ -104,10 +104,32 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
-		<mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/deleteDep/*" />
 			<bean class="com.hrms.interceptor.DepartmentDeleteInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
+			
+			
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/project/new" />			
+			<bean class="com.hrms.interceptor.ProjectInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/project/edit/*" />		
+			<bean class="com.hrms.interceptor.ProjectInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/project/save" />			
+			<bean class="com.hrms.interceptor.ProjectInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/project/remove/*" />		
+			<bean class="com.hrms.interceptor.ProjectInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 

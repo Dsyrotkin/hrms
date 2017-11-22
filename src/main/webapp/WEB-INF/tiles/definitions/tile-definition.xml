@@ -26,6 +26,12 @@
 		<put-attribute name="heading" value="Welcome" />
 		<put-attribute name="body" value="/WEB-INF/jsp/noProjectFound.jsp" />
 	</definition>
+	
+	<definition name="noPermission" extends="baseLayout">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="heading" value="Welcome" />
+		<put-attribute name="body" value="/WEB-INF/jsp/noPermission.jsp" />
+	</definition>
 
 	<definition name="login" extends="baseLayout">
 		<put-attribute name="title" value="Login" />
