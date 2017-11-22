@@ -3,25 +3,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <div class="row">
 	<div class="col-xs-2 col-md-2"></div>
 	<div class="col-xs-8 col-md-8">
-		<div class="alert alert-success">Project Saved Successfully</div>
+		<div class="alert alert-success"><spring:message code="Project.project_saved_successfully"/></div>
 		<div class="panel panel-default">
-			<div class="panel-heading">Project Details</div>
+			<div class="panel-heading"><spring:message code="Project.project_details"/></div>
 			<div class="panel-body">
 				<dl class="dl-horizontal">
-				  <dt>Name</dt>
+				  <dt><spring:message code="Project.name"/></dt>
 				  <dd>${project.name}</dd>
-				  <dt>Description</dt>
+				  <dt><spring:message code="Project.description"/></dt>
 				  <dd>${project.description}</dd>
-				  <dt>Code</dt>
+				  <dt><spring:message code="Project.code"/></dt>
 				  <dd>${project.code}</dd>
-				  <dt>Start Date</dt>
+				  <dt><spring:message code="Project.startdate"/></dt>
 				  <dd><fmt:formatDate pattern="MM-dd-yyyy" value="${project.startDate}" /></dd>
-				  <dt>End Date</dt>
+				  <dt><spring:message code="Project.enddate"/></dt>
 				  <dd><fmt:formatDate pattern="MM-dd-yyyy" value="${project.endDate}" /></dd>
-				  <dt>Department</dt>
+				  <dt><spring:message code="Project.department"/></dt>
 				  <dd>${project.department.name}</dd>
 				</dl>
 			</div>
