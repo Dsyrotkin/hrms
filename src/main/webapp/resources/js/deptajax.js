@@ -1,4 +1,11 @@
- 
+
+$(document).ready(function(){
+	$('#searchDept').click(function(){changeAction('searchDept')}); 
+	$('#addNewDept').click(function(){changeAction('addNewDept')}); 
+});
+
+
+
 var contextRoot = "/" + window.location.pathname.split( '/' )[1];
 
 function deleteSubmit(deptId){
@@ -48,6 +55,7 @@ function deleteSubmit(deptId){
 
 
 function changeAction(actionName) {
+//	alert(actionName)
 	document.getElementById("deptForm").action = actionName;
 }
 
