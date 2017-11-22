@@ -103,6 +103,13 @@
 			<bean class="com.hrms.interceptor.VolunteerInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+		<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/deleteDep/*" />
+			<bean class="com.hrms.interceptor.DepartmentDeleteInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">

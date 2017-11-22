@@ -22,10 +22,15 @@ function deleteSubmit(deptId){
 		},
  
 		error: function(errorObject ){	
-			//alert(errorObject);
+//			alert(errorObject.status);
+//			alert(errorObject)
 			//alert(errorObject.responseJSON.succces);
-			
-			if (!errorObject.responseJSON.succces ) {
+			if(errorObject.status = 401){
+				$('#result').html("");
+				$('#errors').html("");
+	 			$("#result").append( '<div class="alert alert-danger"> <p> There is no permission for the user to delete </p></div>');                
+		 	    $('#result').show();
+			}else  if (!errorObject.responseJSON.succces ) {
 				
 				$('#result').html("");
 				$('#errors').html("");

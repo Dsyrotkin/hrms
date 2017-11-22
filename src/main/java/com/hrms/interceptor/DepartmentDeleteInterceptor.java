@@ -3,12 +3,18 @@ package com.hrms.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hrms.util.GeneralHelper;
+
 @Component
-public class DepartmentInterceptor implements HandlerInterceptor {
+public class DepartmentDeleteInterceptor implements HandlerInterceptor {
+	
+	@Autowired
+	private GeneralHelper helper;
 
 	@Override
 	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
@@ -22,17 +28,15 @@ public class DepartmentInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse arg1, Object arg2) throws Exception {
-	
-//		Principal principal = request.getUserPrincipal();
-//		String userMessage = "Welcome to web security demo!";
-//		
-//		if(request.isUserInRole("ROLE_ADMIN")) {
-//			userMessage += " ROLE_ADMIN has extra 20% off!";
-//			
-//			return true;
-//		}	
+
 		
-		return false;
+		if(!request.isUserInRole("ROLE_ADMIN")) {
+			arg1.setStatus(401);
+			return false;
+		}
+		
+		
+		return true;
 		
 		
 	}
