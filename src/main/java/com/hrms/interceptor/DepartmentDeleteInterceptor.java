@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hrms.util.GeneralHelper;
 
-@Component
+
 public class DepartmentDeleteInterceptor implements HandlerInterceptor {
 	
 	@Autowired
@@ -28,7 +28,7 @@ public class DepartmentDeleteInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse arg1, Object arg2) throws Exception {
-
+//        request.getRequestURL();
 		
 		if(!request.isUserInRole("ROLE_ADMIN")) {
 			arg1.setStatus(401);
