@@ -6,6 +6,8 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+CREATE TABLE persistent_logins (username varchar(64) not null,series varchar(64) not null,token varchar(64) not null,last_used timestamp not null,PRIMARY KEY (series));
+
 INSERT INTO `role` (`ID`, `NAME`) VALUES (1, 'ROLE_ADMIN');
 INSERT INTO `role` (`ID`, `NAME`) VALUES (2, 'ROLE_USER');
 

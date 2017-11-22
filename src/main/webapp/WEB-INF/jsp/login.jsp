@@ -29,9 +29,9 @@
 							id="password" name="password" />
 					</div>
 				 <div class="col-sm-offset-1">
-				            <label class="checkbox">
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
+				   
+              <input type='checkbox' name="remember-me-param"/> Remember me
+
           </div>
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
