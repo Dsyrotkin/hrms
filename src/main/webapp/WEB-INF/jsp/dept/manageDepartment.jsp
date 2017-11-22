@@ -86,10 +86,11 @@
 
 
 					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" value="<spring:message code="Gen.SEARCH" />"
-							onClick="changeAction('searchDept')" /> <input type="submit"
+						<input type="submit" id="searchDept" class="btn btn-primary" value="<spring:message code="Gen.SEARCH" />"
+							 /> 
+						<input type="submit" id="addNewDept"
 							class="btn btn-success" value="<spring:message code="Gen.ADD" />"
-							onClick="changeAction('addNewDept')" />
+							/>
 
 
 					</div>

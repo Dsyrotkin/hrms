@@ -14,21 +14,21 @@
   
 				<form:form modelAttribute="updateDept" method="post"
 					action="saveUpdateDept" id="deptForm">
-					<form:errors path="*" cssClass="text-danger"/>
+					<form:errors path="*" cssClass="alert-danger"/>
 					<input type="hidden" name="id" id="id" value="${updateDept.id}" />
 
 					<div class="form-group">
 						<label for="name"><spring:message code="Dept.NAME" /></label>
 						<form:input cssClass="form-control" id="deptName" name="name"
 							path="name" />
-						<form:errors path="name" cssClass="text-danger"/>
+						<form:errors path="name" cssClass="alert-danger"/>
 					</div>
 
 					<div class="form-group">
 						<label for="description"><spring:message code="Dept.DESC" /></label>
 						<form:input cssClass="form-control" id="description"
 							name="description" path="description" />
-						<form:errors path="description" cssClass="text-danger"/>
+						<form:errors path="description" cssClass="alert-danger"/>
 					</div>
 					
 
