@@ -3,6 +3,8 @@ package com.hrms.controller;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -20,10 +22,19 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hrms.builder.RoleBuilder;
 import com.hrms.builder.RoleListBuilder;
 import com.hrms.builder.UserBuilder;
@@ -88,9 +99,54 @@ public class RoleControllerTest {
           mockMvc.perform(get("/admin/role/"+rolename))
                   .andExpect(status().isOk())
                   //.andExpect(content().contentType(TestUtil.APPLICATION_JSON_UTF8))
-//                  .andExpect(jsonPath("$[0].id", is(1)))
+                  .andExpect(jsonPath("$[0].id", is(1)))
                   .andExpect(jsonPath("$[0].username", is("test")))
                   .andExpect(jsonPath("$[0].password", is("test")));
+    }
+    
+    
+    @Test
+    public void addUserRole() throws Exception {
+    List<Role> roles = new RoleListBuilder().build();
+   	User user = new UserBuilder().withId(1L).withUserName("test").withPassword("test").withRoles(roles).build();
+		// studentService.addCourse to respond back with mockCourse
+		when(userServiceMock.save(any(User.class))).thenReturn(user);
+		when(userServiceMock.getUserByUsername(user.getUsername())).thenReturn(user);
+		when(roleServiceMock.getByName("ROLE_TEST")).thenReturn(roles.get(0));
+		String Json = "{\"username\":\"test\",\"role\":\"ROLE_TEST\"}";
+
+	       mockMvc.perform(post("/admin/role/addUserRole").contentType(MediaType.APPLICATION_JSON).content(Json))
+           .andExpect(status().isOk())
+           .andExpect(jsonPath("$[0].id", is(1)))
+           .andExpect(jsonPath("$[0].username", is("test")))
+           .andExpect(jsonPath("$[0].password", is("test")));
+	       
+		// Send course as body to /students/Student1/courses
+//		RequestBuilder requestBuilder = MockMvcRequestBuilders
+//				.post("/admin/role/addRole")
+//				.contentType(MediaType.APPLICATION_JSON);
+//
+//		MvcResult result;
+//		try {
+//			result = mockMvc.perform(requestBuilder).andReturn();
+//			MockHttpServletResponse response = result.getResponse();
+//
+//			assertEquals(HttpStatus.OK.value(), response.getStatus());
+//			
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+
+		
+    }
+    
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
     
 }
