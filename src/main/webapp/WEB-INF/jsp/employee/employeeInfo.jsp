@@ -33,6 +33,7 @@
 					<fieldset>
 						<legend>Address</legend>
 						<p><label>State:</label> ${employee.address.state}</p>
+						<p><label>City:</label> ${employee.address.city}</p>
 						<p><label>Street:</label> ${employee.address.street}</p>
 						<p><label>ZIP:</label> ${employee.address.zip}</p>
 					</fieldset>
