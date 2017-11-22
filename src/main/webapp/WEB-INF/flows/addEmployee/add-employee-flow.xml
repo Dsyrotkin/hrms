@@ -34,9 +34,7 @@
 	<transition to="employeeInfo" />
 </action-state>
 
-<view-state id="employeeInfo" model="employee">
-	<transition on="home" to="cancelRegistration"/>
-</view-state>
+<end-state id="employeeInfo" view="employeeInfo" />
 
 <end-state id="cancelRegistration" view="externalRedirect:contextRelative:/"/>
 

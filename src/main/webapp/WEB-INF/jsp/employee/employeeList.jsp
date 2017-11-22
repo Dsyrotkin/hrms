@@ -21,7 +21,7 @@
 				<table class="table table-bordered table-hover table-responsive">
 					<thead>
 						<tr>
-							<td />
+							<td>Action</td>
 							<td>Full Name</td>
 							<td>Employee ID</td>
 							<td>Phone</td>
