@@ -18,6 +18,11 @@
 						<form:errors path="state" class="text-danger"></form:errors>
 					</div>
 					<div class="form-group">
+						<label for="city">City</label>
+						<form:input class="form-control" id="city" path="city" />
+						<form:errors path="city" class="text-danger"></form:errors>
+					</div>
+					<div class="form-group">
 						<label for="street">Street</label>
 						<form:input class="form-control" id="street" path="street" />
 						<form:errors path="street" class="text-danger"></form:errors>

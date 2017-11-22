@@ -22,15 +22,23 @@ function deleteSubmit(deptId){
 		},
  
 		error: function(errorObject ){	
-			//alert(errorObject);
+//			alert(errorObject.status);
+//			alert(errorObject)
 			//alert(errorObject.responseJSON.succces);
-			
-			if (!errorObject.responseJSON.succces ) {
-				alert(324)
-	 			$('#success').html("");
-	 			$('#errors').html("");
-	 			$("#errors").append( '<div class="alert alert-danger"> <p> '+errorObject.responseJSON.message +'</p></div>');                
-	 	 	    $('#result').show();
+			if(errorObject.status = 401){
+				$('#result').html("");
+				$('#errors').html("");
+	 			$("#result").append( '<div class="alert alert-danger"> <p> There is no permission for the user to delete </p></div>');                
+		 	    $('#result').show();
+			}else  if (!errorObject.responseJSON.succces ) {
+				
+				$('#result').html("");
+				$('#errors').html("");
+	 			$("#result").append( '<div class="alert alert-danger"> <p> '+errorObject.responseJSON.message +'</p></div>');                
+		 	    $('#result').show();
+		 	    
+		 	    
+				
 			}else {
 				alert(errorObject.responseJSON.errors(0));   // "non" Validation Error
 			}
