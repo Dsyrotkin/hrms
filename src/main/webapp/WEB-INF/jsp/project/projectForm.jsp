@@ -15,6 +15,7 @@
 					<c:if test="${not empty project.id}">
 						<form:input type="hidden" class="form-control" id="id" path="id" />
 					</c:if>
+					
 					<div class="form-group">
 						<label for="name">Name</label> 
 						<form:input class="form-control" id="name" path="name" />
@@ -53,6 +54,7 @@
 					<div class="form-group text-right">
 						<input type="submit" class="btn btn-primary" value="Submit" />
 					</div>
+					<form:errors path="*" class="alert alert-danger" />
 				</form:form>
 			</div>
 		</div>

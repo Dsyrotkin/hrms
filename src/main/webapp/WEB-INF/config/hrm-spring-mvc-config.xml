@@ -24,8 +24,6 @@
     </mvc:message-converters>
 </mvc:annotation-driven>
 	<mvc:resources  location="/resources/"  mapping="/resource/**"/>
-<mvc:annotation-driven conversion-service="projectCodeFormat"/>
-	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />

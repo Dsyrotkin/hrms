@@ -14,5 +14,6 @@ body{
 
 .footer{
 	position: absolute;
+	clear: both;
 	bottom:0px;
 }

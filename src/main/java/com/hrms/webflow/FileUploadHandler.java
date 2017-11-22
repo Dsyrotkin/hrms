@@ -16,11 +16,11 @@ public class FileUploadHandler implements Serializable{
 		this.file = file;
 	}
 	
-	public Image getImage() throws IOException {
+	public Image getImage(long id) throws IOException {
 		Image image = new Image();
 		
 		if (file != null) {
-            image.setFileName(file.getOriginalFilename());
+            image.setFileName(id + "_" + file.getOriginalFilename());
             image.setData(file.getBytes());            
         }
   
