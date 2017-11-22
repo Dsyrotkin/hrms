@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,10 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hrms.domain.Department;
 import com.hrms.domain.Project;
+import com.hrms.exc.exception.ProjectNotFoundException;
 import com.hrms.services.DepartmentService;
 import com.hrms.services.ProjectService;
 import com.hrms.util.AutoCompleteObject;
@@ -52,9 +55,13 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="edit/{id}", method=RequestMethod.GET)
-	public String projectEdit(Model model, @PathVariable String id) {
+	public String projectEdit(Model model, @PathVariable String id) throws ProjectNotFoundException {
 		
 		Project project = projectService.getById(Long.parseLong(id));
+		if(project == null) {
+			System.out.println("null project");
+			throw new ProjectNotFoundException("Project.notfound");
+		}
 		model.addAttribute("project", project);
 		List<Department> departments = departmentService.getAllDepartments();
 		model.addAttribute("departments", departments);
@@ -108,5 +115,17 @@ public class ProjectController {
 		model.addAttribute("projects", projects);
 		return "projectList";
 	} 
+	
+	@ExceptionHandler(ProjectNotFoundException.class)
+	public ModelAndView handleError(ProjectNotFoundException exception) {
+	ModelAndView mav = new ModelAndView();
+	System.out.println("msg=" + exception.getMessage());
+	mav.addObject("msg", exception.getMessage());
+    
+	/*mav.addObject("exception", exception);
+	mav.addObject("url", req.getRequestURL());*/
+	mav.setViewName("noProjectFound");
+	return mav;
+	}
 	
 }
