@@ -160,22 +160,22 @@ $(document).ready(function() {
 		$('#list_' + rolename).html("");
 		$('#alert_' + rolename).hide();
 		$('#success_' + rolename).hide();
-		for(var i = 0 ; i < users.length; i++)
-			{
-			var username = users[i].username;
-			$('#list_' + rolename).append('<a id="'+ username + rolename +'" href="#" class="list-group-item">'+ username
+		
+		$.each(users, function( index, value ) {
+			//var username = ;
+			$('#list_' + rolename).append('<a id="'+ value.username + rolename +'" href="#" class="list-group-item">'+ value.username
 					+ '<span class="pull-right">' +
-					'<span id="buttondelete_'+ username + rolename +'" class="btn btn-xs btn-danger">' +
+					'<span id="buttondelete_'+ value.username + rolename +'" class="btn btn-xs btn-danger">' +
 					'<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
 					'</span>' +
 					'</span>' 
            + '</a>');
 			
-			$("#buttondelete_"+users[i].username + rolename).click(function(){
-				deleteRoleUser(username,rolename)
+			$("#buttondelete_"+value.username + rolename).click(function(){
+				deleteRoleUser(value.username,rolename)
 			});
-			}
-		
+			
+			});
 //		$('#list_' + rolename).attr("style", "display: block")
 	} 
 });
