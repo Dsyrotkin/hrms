@@ -107,7 +107,7 @@
 				$('#tabtitle_' + role_name).remove();
 			},
 			error: function(response){				
-					$('#alert_' + role_name).html("Error occured while deleting.");
+					$('#alert_' + role_name).html("Delete all user roles before delete role.");
 					$('#alert_' + role_name).show();
 			}
 		});
