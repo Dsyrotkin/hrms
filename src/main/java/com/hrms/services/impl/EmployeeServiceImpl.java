@@ -61,6 +61,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 		Role role = roleService.getByName("ROLE_USER");
 		newUser.addRole(role);
 		newUser.setEmployee(employee);
+		newUser.setPassword("test");
 		employee.setUser(newUser);
 		return employee;
 	}
