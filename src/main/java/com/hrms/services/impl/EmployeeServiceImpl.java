@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.hrms.domain.Employee;
 import com.hrms.domain.Project;
+import com.hrms.domain.Role;
 import com.hrms.domain.User;
 import com.hrms.repositories.EmployeeRepository;
 import com.hrms.services.EmployeeService;
+import com.hrms.services.RoleService;
 import com.hrms.services.UserService;
 
 @Service
@@ -20,6 +22,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 	
 	@Autowired
 	EmployeeRepository employeeRepository;
+	
+	@Autowired
+	RoleService roleService;
 
 	@Override
 	public Employee save(Employee employee) {
@@ -53,7 +58,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 		String[] fullName = employee.getFullName().split(" ");
 		String username = fullName[0].charAt(0) + fullName[1];
 		User newUser = userService.createUser(username.toLowerCase());
+		Role role = roleService.getByName("ROLE_USER");
+		newUser.addRole(role);
 		newUser.setEmployee(employee);
+		newUser.setPassword("$2a$10$EblZqNptyYvcLm/VwDCVAuBjzZOI7khzdyGPBr08PpIi0na624b8.");
 		employee.setUser(newUser);
 		return employee;
 	}
