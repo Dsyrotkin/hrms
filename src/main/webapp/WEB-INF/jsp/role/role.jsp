@@ -64,12 +64,22 @@
 <div class="col-xs-3  col-md-3"></div>
 </div>
 
-<div style="display:none;" id="user-dialog-confirm" title="Do you want to delete role from user ?">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These item will be permanently deleted and cannot be recovered. Are you sure?</p>
+
+
+<div id="user-dialog-confirm" style = "display: none;" title="<spring:message code="Role.MSG.DELETE.DIALOG" /> ">
+						<p>
+							<span class="ui-icon ui-icon-alert"
+								style="float: left; margin: 12px 12px 20px 0;"></span>
+								<spring:message code="Dept.MSG.DELETE" /> 
+						</p>
 </div>
  
- 
- <div style="display:none;" id="role-dialog-confirm" title="Do you want to delete role ?">
-  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These item will be permanently deleted and cannot be recovered. Are you sure?</p>
+ <div id="role-dialog-confirm" style = "display: none;" title="<spring:message code="Role.MSG.DELETE.DIALOG.ROLE" /> ">
+						<p>
+							<span class="ui-icon ui-icon-alert"
+								style="float: left; margin: 12px 12px 20px 0;"></span>
+								<spring:message code="Dept.MSG.DELETE" /> 
+						</p>
 </div>
+ 
  
