@@ -29,54 +29,60 @@
 			<ul class="nav navbar-nav">
 
 				<security:authorize access="hasRole('ROLE_ADMIN')">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Employee <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="<spring:url value="/employee/list" />">List
-									Employees</a></li>
-							<li><a href="<spring:url value="/employee/new" />"> Add
-									Employee</a></li>
 
-							<!-- <li role="separator" class="divider"></li> -->
-						</ul></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"><spring:message code="Nav.Employee"/> <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="<spring:url value="/employee/list" />"><spring:message code="Nav.ListEmployee"/></a></li>
+						<li>
+							<a href="<spring:url value="/employee/new" />">
+							<spring:message code="Nav.AddEmployee"/></a></li>
+						
+						<!-- <li role="separator" class="divider"></li> -->						
+					</ul>
+				</li>
+				
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"><spring:message code="Nav.Project"/> <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="${context}project/list"><spring:message code="Nav.ListProjects"/></a></li>
+						<li><a href="${context}project/new"><spring:message code="Nav.AddProject"/></a></li>
+						
+						<!-- <li role="separator" class="divider"></li> -->						
+					</ul>
+				</li>
+
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"><spring:message code="Nav.Department"/> <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="${context}manageDept"><spring:message code="Nav.ListDepartments"/></a></li>
+						<li><a href="${context}addNewDept"><spring:message code="Nav.AddDepartment"/></a></li>
+						
+						<!-- <li role="separator" class="divider"></li> -->						
+					</ul>
+				</li>
 
 				</security:authorize>
+			
 				<security:authorize
 					access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Project <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="${context}project/list">List Projects</a></li>
-							<li><a href="${context}project/new">Add Project</a></li>
+				
 
-							<!-- <li role="separator" class="divider"></li> -->
-						</ul></li>
-				</security:authorize>
-				<security:authorize
-					access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Department <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="${context}manageDept">List Departments</a></li>
-							<li><a href="${context}addNewDept">Add Department</a></li>
 
-							<!-- <li role="separator" class="divider"></li> -->
-						</ul></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"><spring:message code="Nav.Admin"/> <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="${context}admin/role"><spring:message code="addRole.page.title" /></a></li>						
+						<!-- <li role="separator" class="divider"></li> -->						
+					</ul>
+				</li>
 
 				</security:authorize>
-				<security:authorize access="hasRole('ROLE_ADMIN')">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Admin <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="${context}admin/role"><spring:message
-										code="addRole.page.title" /></a></li>
-							<!-- <li role="separator" class="divider"></li> -->
-						</ul></li>
-				</security:authorize>
+
 			</ul>
 			<spring:url value="?language=ar" var="url_ar"></spring:url>
 			<spring:url value="?language=en" var="url_en"></spring:url>
@@ -84,16 +90,22 @@
 			<spring:url value="?language=ua" var="url_ua"></spring:url>
 			<ul class="nav navbar-nav navbar-right">
 				<security:authorize access="isAuthenticated()">
-					<li class="active"><a href="#">Welcome ${user}</a></li>
+					<li class="active"><a href="#"><spring:message code="Nav.Welcome"/> ${user}</a></li>
 				</security:authorize>
 
 				<li><security:authorize access="!isAuthenticated()">
-						<a href="${context}login">Login</a>
-					</security:authorize> <security:authorize access="isAuthenticated()">
-						<a href="${context}logout">Logout</a>
-					</security:authorize></li>
+						<a href="${context}login"><spring:message code="Nav.Login"/></a>
+					</security:authorize>
+					<security:authorize access="isAuthenticated()">
+						<a href="${context}logout"><spring:message code="Nav.Logout"/></a>
+					</security:authorize>
+				</li>
+				
+
+					
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
+
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false"> <img alt="Language"
 						src="${image}/earth-22.png" /> <span class="caret"></span>

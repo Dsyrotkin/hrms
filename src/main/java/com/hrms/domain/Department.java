@@ -31,11 +31,11 @@ public class Department implements Serializable {
 	@Column(name = "ID")
 	private long id;
 	
-	@NotBlank
+	@NotBlank(message= "{Dept.NAME.REQUIRED}")
 	@Column(name = "NAME")
 	private String name;
 	
-	@NotBlank
+    @NotBlank(message= "{Dept.Desc.REQUIRED}")
 	@Column(name = "DESCRIPTION")
 	private String description;
 	

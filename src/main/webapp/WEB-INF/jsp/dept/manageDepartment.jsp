@@ -86,21 +86,21 @@
 
 
 					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" value="<spring:message code="Gen.SEARCH" />"
-							onClick="changeAction('searchDept')" /> <input type="submit"
+						<input type="submit" id="searchDept" class="btn btn-primary" value="<spring:message code="Gen.SEARCH" />"
+							 /> 
+						<input type="submit" id="addNewDept"
 							class="btn btn-success" value="<spring:message code="Gen.ADD" />"
-							onClick="changeAction('addNewDept')" />
+							/>
 
 
 					</div>
 
 
-					<div id="dialog-confirm" style = "display: none;" title="Do you want to department ">
+					<div id="dialog-confirm" style = "display: none;" title="<spring:message code="Dept.MSG.DELETE.DIALOG" /> ">
 						<p>
 							<span class="ui-icon ui-icon-alert"
-								style="float: left; margin: 12px 12px 20px 0;"></span>These item
-							will be permanently deleted and cannot be recovered. Are you
-							sure ?
+								style="float: left; margin: 12px 12px 20px 0;"></span>
+								<spring:message code="Dept.MSG.DELETE" /> 
 						</p>
 					</div>
 

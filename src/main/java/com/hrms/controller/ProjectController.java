@@ -128,4 +128,10 @@ public class ProjectController {
 	return mav;
 	}
 	
+	@RequestMapping(value = "noPermission", method=RequestMethod.GET)
+	public String noPermission(Model model) {
+		model.addAttribute("msg", "noPermission");
+		return "noPermission";
+	}
+	
 }
