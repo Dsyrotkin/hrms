@@ -11,9 +11,10 @@
       http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 
-	
-	
-	<jpa:repositories base-package="com.hrms.repositories" entity-manager-factory-ref="entityManager"  />
+
+
+	<jpa:repositories base-package="com.hrms.repositories"
+		entity-manager-factory-ref="entityManager" />
 
 	<bean id="entityManager"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -41,7 +42,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/hrms" />
 		<property name="username" value="hrms" />
-		<property name="password" value="mum1234" />		
+		<property name="password" value="mum1234" />
 
 	</bean>
 
@@ -60,15 +61,23 @@
 
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-		
+
 	<!-- custom formatter -->
-	
-	<bean id="projectCodeFormat" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+
+	<bean id="projectCodeFormat"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="formatters">
 			<set>
-				<bean class="com.hrms.formatter.ProjectCodeFormatter"> </bean>
+				<bean class="com.hrms.formatter.ProjectCodeFormatter">
+				</bean>
 			</set>
 		</property>
 	</bean>
 
+	<!-- If request parameter "targetUrl" is existed, then forward to this url -->
+	<!-- For update login form -->
+	<bean id="savedRequestAwareAuthenticationSuccessHandler"
+		class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<property name="targetUrlParameter" value="targetUrl" />
+	</bean>
 </beans>
