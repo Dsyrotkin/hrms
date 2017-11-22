@@ -4,6 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <c:url var="context" value="/"/>
 <spring:url var="JS" value="/resources/js"/>
 <script type="text/javascript" src="${JS}/image-upload.js"></script>
@@ -20,8 +21,8 @@
 						<img id="chosenImage" src="#" alt="" style="max-width: 200px; max-height: 300px;"/>
 					</div>
 					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" name="_eventId_contacts" value="Next" />
-						<button id="btnCancel" class="btn btn-danger" name="_eventId_back">Return</button>
+						<button id="btnNext" class="btn btn-primary" name="_eventId_contacts">Next</button>
+						<button id="btnReturn" class="btn btn-danger" name="_eventId_back">Return</button>
 					</div>
 				</form:form>
 			</div>

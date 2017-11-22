@@ -17,7 +17,7 @@
 
 <view-state id="employeePhoto" model="fileUploadHandler">
     <transition on="contacts" to="employeeContactsForm">
-    	<evaluate expression="fileUploadHandler.getImage(employee.employeeId)" result="employee.photo"></evaluate>
+    	<evaluate expression="fileUploadHandler.getImage(employee.employeeId, flowRequestContext)" result="employee.photo"></evaluate>
     </transition>
     <transition on="back" to="employeeForm"/>
 </view-state>
